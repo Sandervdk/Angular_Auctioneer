@@ -1,0 +1,18 @@
+.container-fluid {
+  height: 100px;
+  padding: 0;
+  background-color: rgb(158, 169, 188);
+}
+
+.img-fluid {
+  height: inherit;
+}
+
+.nav-item {
+  flex: 9999;
+  padding: 0 25px;
+}
+
+hr {
+  margin: 0;
+}
