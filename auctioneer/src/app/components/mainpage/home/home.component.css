@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.middle-column {
+  flex: 1 1 auto;
+}
+
+.img-box {
+  display: inline-flex;
+  margin: 5px;
+}
+
+.left-column {
+  /*background-color: antiquewhite;*/
+  flex: 0 0 auto;
+  min-width: 200px;
+  height: 100%;
+}
+
+.right-column {
+  flex: 0 0 auto;
+  width: 30%;
+}
