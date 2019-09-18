@@ -4,14 +4,16 @@ export class Overview1 implements OnInit {
   public offers: Offer[];
 
   constructor() {
+    // this.offers = [];
+    //
+    // for(let i = 0; i < 8; i++) {
+    //   this.offers.push(this.randomOffer("Amazing Offer: " + i));
+    // }
   }
 
   ngOnInit() {
-    this.offers = [];
-    for(let i = 0; i < 8; i++) {
-      this.offers.push(this.randomOffer("Amazing Offer: " + i));
-    }
-  }ng
+
+  }
 
   randomOffer(title: string): Offer {
     let description: string = "A description";

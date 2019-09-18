@@ -7,14 +7,18 @@ import {Overview1} from "./overview1.component";
   styleUrls: ['./offers.component.css'],
   providers: [Overview1]
 })
+
 export class OffersComponent implements OnInit {
-  offers : {title: string, description: string, auctionStatus: AuctionStatus,
-    valueHighestBid: number, numberOfBids: number, sellDate: Date}[] = [];
+  offers : Offer[];
 
   constructor(private overview1: Overview1) {}
 
   ngOnInit() {
-    this.offers = this.overview1.offers;
+    this.offers = [];
+
+    for(let i = 0; i < 8; i++) {
+      this.offers.push(this.overview1.randomOffer("Amazing Offer: " + i));
+    }
   }
 
 }
