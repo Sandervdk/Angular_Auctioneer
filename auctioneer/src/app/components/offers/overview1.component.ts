@@ -3,7 +3,8 @@ import {OnInit} from "@angular/core";
 export class Overview1 implements OnInit {
   public offers: Offer[];
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     this.offers = [];
@@ -17,7 +18,7 @@ export class Overview1 implements OnInit {
     let sellDate: Date = new Date();
     let auctionStatus: AuctionStatus;
     let valueHighestBid: number;
-    let numberOBids: number;
+    let numberOfBids: number;
 
     switch (Math.random() * 8) {
       case 0: auctionStatus = AuctionStatus.CLOSED; break;
@@ -31,9 +32,9 @@ export class Overview1 implements OnInit {
     }
 
     valueHighestBid = Math.random() * 2500;
-    numberOBids = Math.random() * 20;
+    numberOfBids = Math.random() * 20;
 
-    return {title, description, auctionStatus, valueHighestBid, numberOBids, sellDate};
+    return {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
   }
 
 }

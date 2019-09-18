@@ -4,16 +4,15 @@ class Offer {
   public sellDate: Date;
   public auctionStatus: AuctionStatus;
   public valueHighestBid: number;
-  public numberOBids: number;
+  public numberOfBids: number;
 
   constructor(title: string, description: string, auctionStatus: AuctionStatus,
-              valueHighestBid: number, numberOfBids: number, selldate: Date) {
+              valueHighestBid: number, numberOfBids: number, sellDate: Date) {
     this.title = title;
     this.description = description;
     this.auctionStatus = auctionStatus;
     this.valueHighestBid = valueHighestBid;
-    this.numberOBids = numberOfBids;
-    this.sellDate = selldate;
+    this.numberOfBids = numberOfBids;
+    this.sellDate = sellDate;
   }
-
 }

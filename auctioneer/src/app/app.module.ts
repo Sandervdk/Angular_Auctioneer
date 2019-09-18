@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/mainpage/header/header.component';
 import { HomeComponent } from './components/mainpage/home/home.component';
 import { NavbarComponent } from './components/mainpage/navbar/navbar.component';
 import { OffersComponent } from './components/offers/offers.component';
+import {Overview1} from "./components/offers/overview1.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { OffersComponent } from './components/offers/offers.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [Overview1],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

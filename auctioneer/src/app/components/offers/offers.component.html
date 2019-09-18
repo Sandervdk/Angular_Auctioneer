@@ -1,1 +1,16 @@
-<p>offers works!</p>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Selling Date</th>
+    <th>Status</th>
+    <th>Number of Bids</th>
+    <th>Value Highest Bid</th>
+  </tr>
+  <tr *ngFor="let offer of offers">
+    <td>{{offer.title}}</td>
+    <td>{{offer.sellDate}}</td>
+    <td>{{offer.auctionStatus}}</td>
+    <td>{{offer.numberOfBids}}</td>
+    <td>{{offer.valueHighestBid}}</td>
+  </tr>
+</table>
