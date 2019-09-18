@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  currentDate: string;
+  date: Date;
 
-  constructor() { }
+  constructor() {
+    this.date = new Date();
+    this.currentDate = "Today is " + this.date.toDateString();
+  }
 
   ngOnInit() {
   }

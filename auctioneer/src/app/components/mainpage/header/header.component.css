@@ -16,3 +16,11 @@
 hr {
   margin: 0;
 }
+
+.flex-divider {
+  flex: 999;
+}
+
+.nav-item {
+  padding: 0;
+}

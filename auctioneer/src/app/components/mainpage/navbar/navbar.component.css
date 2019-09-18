@@ -6,4 +6,24 @@
   color: rgba(0,0,0,.9);
 }
 
+.navbar-brand:hover {
+  background-color: lightgray;
+}
 
+.navbar {
+  padding: 0;
+}
+
+.navbar-brand {
+  margin: 0;
+  padding: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  margin: 0;
+  padding: 0;
+}
