@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/mainpage/header/header.component';
 import { HomeComponent } from './components/mainpage/home/home.component';
 import { NavbarComponent } from './components/mainpage/navbar/navbar.component';
-import { OffersComponent } from './components/offers/offers.component';
-import { Offers2Component } from './components/offers/offers2.component';
-import { Details2Component } from './components/offers/details2.component';
+import { OffersComponent } from './components/offers/Offers/offers.component';
+import { Offers2Component } from './components/offers/Offers2/offers2.component';
+import { Details2Component } from './components/offers/Offers2/details/details2.component';
 
 @NgModule({
   declarations: [

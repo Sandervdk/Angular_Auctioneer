@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {OffersComponent} from "./offers.component";
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {OffersComponent} from "../Offers/offers.component";
 
 @Component({
   selector: 'app-offers2',
@@ -8,6 +8,8 @@ import {OffersComponent} from "./offers.component";
 })
 export class Offers2Component implements OnInit {
   offers : Offer[];
+  selectedOffer: Offer;
+  offerSelected: boolean;
 
   constructor() {}
 
@@ -16,6 +18,16 @@ export class Offers2Component implements OnInit {
 
     for(let i = 0; i < 8; i++) {
       this.offers.push(this.addRandomOffer());
+    }
+  }
+
+  selectOffer(title: string): void {
+    this.offerSelected = true;
+
+    for (let i = 0; i < this.offers.length; i++) {
+      if (this.offers[i].title == title) {
+        this.selectedOffer = this.offers[i];
+      }
     }
   }
 
@@ -40,7 +52,14 @@ export class Offers2Component implements OnInit {
 
     valueHighestBid = parseFloat((Math.random() * 2500).toFixed(2));
     numberOfBids = Math.round(Math.random() * 20);
+    let newOffer: Offer = {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
 
-    return {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
+    //Adds a new offer and displays it instantly, (check is so the first offers that get added in the list don't show)
+    if (this.offers.length >= 8) {
+      this.selectedOffer = newOffer;
+      this.offerSelected = true;
+    }
+
+    return newOffer;
   }
 }
