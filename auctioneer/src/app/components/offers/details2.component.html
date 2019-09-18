@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table" *ngFor="let offer of offers">
+        <tr>
+          <th>Title:</th>
+          <td>{{offer.title}}</td>
+        </tr>
+        <tr>
+          <th>Description:</th>
+          <td>{{offer.description}}</td>
+        </tr>
+        <tr>
+          <th>Status:</th>
+          <td>{{offer.status}}</td>
+        </tr>
+        <tr>
+          <th>Number of Bids:</th>
+          <td>{{offer.numberOfBids}}</td>
+        </tr>
+        <tr>
+          <th>Highest Bid:</th>
+          <td>{{offer.valueHighestBid}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
