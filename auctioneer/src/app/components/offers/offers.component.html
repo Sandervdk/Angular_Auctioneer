@@ -1,4 +1,5 @@
-<table>
+<div class="container container-fluid">
+<table class="table">
   <tr>
     <th>Title</th>
     <th>Selling Date</th>
@@ -8,9 +9,11 @@
   </tr>
   <tr *ngFor="let offer of offers">
     <td>{{offer.title}}</td>
-    <td>{{offer.sellDate}}</td>
+    <td>{{offer.sellDate.toDateString() + " " + offer.sellDate.toLocaleTimeString().substring(0, 5)}}</td>
     <td>{{offer.auctionStatus}}</td>
     <td>{{offer.numberOfBids}}</td>
     <td>{{offer.valueHighestBid}}</td>
   </tr>
 </table>
+<button (click)="offers.push(addRandomOffer())">Add Offer</button>
+</div>
