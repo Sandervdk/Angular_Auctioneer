@@ -6,7 +6,7 @@
           <th>Title</th>
         </tr>
         <tbody>
-          <tr *ngFor="let offer of offers">
+          <tr class="offer" *ngFor="let offer of offers">
             <td (click)="selectOffer(offer)">{{offer.title}}</td>
           </tr>
         </tbody>
