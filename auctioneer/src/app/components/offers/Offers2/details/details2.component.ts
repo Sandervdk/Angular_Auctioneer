@@ -11,8 +11,9 @@ import { Offer } from "../../../../models/offer";
 export class Details2Component implements OnInit {
   @Input() offer: Offer;
   @Output() copyChange: EventEmitter<Offer> = new EventEmitter<Offer>();
+  @Output() copyDelete: EventEmitter<Offer> = new EventEmitter<Offer>();
 
-  auctionStatus: AuctionStatus = AuctionStatus;
+  auctionStatus = AuctionStatus;
 
   constructor() {
   }
@@ -24,4 +25,7 @@ export class Details2Component implements OnInit {
     this.copyChange.emit(this.offer);
   }
 
+  deleteOffer() {
+    this.copyDelete.emit(this.offer);
+  }
 }

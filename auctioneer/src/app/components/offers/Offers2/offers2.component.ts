@@ -1,7 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {AuctionStatus} from "../../../models/auctionStatus";
 import { Offer } from "../../../models/offer";
-import {of} from "rxjs";
 
 @Component({
   selector: 'app-offers2',
@@ -21,6 +20,14 @@ export class Offers2Component implements OnInit {
 
     for(let i = 0; i < 8; i++) {
       this.offers.push(this.addRandomOffer());
+    }
+  }
+
+  deleteOffer() {
+    for (let i = 0; i < this.offers.length; i++) {
+      if (this.offers[i] == this.selectedOffer) {
+        this.offers.splice(i, 1);
+      }
     }
   }
 

@@ -15,7 +15,11 @@
     </div>
     <div class="col">
       <div>
-        <app-details2 *ngIf="offerSelected" [offer]="selectedOfferCopy" (copyChange)="changeOffer($event)"></app-details2>
+        <app-details2 *ngIf="offerSelected"
+                      [offer]="selectedOfferCopy"
+                      (copyChange)="changeOffer($event)"
+                      (copyDelete)="deleteOffer()">
+        </app-details2>
       </div>
     </div>
   </div>
