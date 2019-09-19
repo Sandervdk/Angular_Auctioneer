@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {AuctionStatus} from "../../../models/auctionStatus";
 import { Offer } from "../../../models/offer";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-offers2',
@@ -10,6 +11,7 @@ import { Offer } from "../../../models/offer";
 export class Offers2Component implements OnInit {
   offers : Offer[];
   selectedOffer: Offer;
+  selectedOfferCopy: Offer;
   offerSelected: boolean;
 
   constructor() {}
@@ -22,12 +24,23 @@ export class Offers2Component implements OnInit {
     }
   }
 
-  selectOffer(title: string): void {
+  changeOffer(offer: Offer) {
+    for (let i = 0; i < this.offers.length; i++) {
+      if (this.offers[i] == this.selectedOffer) {
+        //yeets the new offer into the offers list ezpz
+        this.offers[i] = offer;
+      }
+    }
+  }
+
+  selectOffer(offer: Offer): void {
     this.offerSelected = true;
 
     for (let i = 0; i < this.offers.length; i++) {
-      if (this.offers[i].title == title) {
+      if (this.offers[i] == offer) {
+        //Selects the selected offer and makes a copy of that specific offer
         this.selectedOffer = this.offers[i];
+        this.selectedOfferCopy = {...this.offers[i]};
       }
     }
   }

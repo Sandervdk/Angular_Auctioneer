@@ -5,40 +5,42 @@
         <tr>
           <th>Title:</th>
           <td>
-            <input type="text" value="{{offer.title}}">
+            <input type="text" [(ngModel)]="offer.title">
           </td>
         </tr>
         <tr>
           <th>Description:</th>
           <td>
-            <input type="text" value="{{offer.description}}">
+            <input type="text" [(ngModel)]="offer.description">
           </td>
         </tr>
         <tr>
           <th>Status:</th>
           <td>
-            <select [value]="copy.auctionStatus">
-              <option>{{auctionStatus.NEW}}</option>
-              <option>{{auctionStatus.CLOSED}}</option>
-              <option>{{auctionStatus.DELIVERED}}</option>
-              <option>{{auctionStatus.FOR_SALE}}</option>
-              <option>{{auctionStatus.EXPIRED}}</option>
-              <option>{{auctionStatus.PAID}}</option>
-              <option>{{auctionStatus.SOLD}}</option>
-              <option>{{auctionStatus.WITHDRAWN}}</option>
-            </select>
+            <label>
+              <select [(ngModel)]="offer.auctionStatus">
+                <option>{{auctionStatus.NEW}}</option>
+                <option>{{auctionStatus.CLOSED}}</option>
+                <option>{{auctionStatus.DELIVERED}}</option>
+                <option>{{auctionStatus.FOR_SALE}}</option>
+                <option>{{auctionStatus.EXPIRED}}</option>
+                <option>{{auctionStatus.PAID}}</option>
+                <option>{{auctionStatus.SOLD}}</option>
+                <option>{{auctionStatus.WITHDRAWN}}</option>
+              </select>
+            </label>
           </td>
         </tr>
         <tr>
           <th>Number of Bids:</th>
           <td>
-            <input type="number" value="{{offer.numberOfBids}}">
+            <input type="number" [(ngModel)]="offer.numberOfBids">
           </td>
         </tr>
         <tr>
           <th>Highest Bid:</th>
           <td>
-            <input type="number" value="{{offer.valueHighestBid}}">
+            <input type="number" [(ngModel)]="offer.valueHighestBid">
           </td>
         </tr>
       </table>

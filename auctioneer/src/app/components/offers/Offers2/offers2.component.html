@@ -7,7 +7,7 @@
         </tr>
         <tbody>
           <tr *ngFor="let offer of offers">
-            <td (click)="selectOffer(offer.title)">{{offer.title}}</td>
+            <td (click)="selectOffer(offer)">{{offer.title}}</td>
           </tr>
         </tbody>
       </table>
@@ -15,7 +15,7 @@
     </div>
     <div class="col">
       <div>
-        <app-details2 *ngIf="offerSelected" [offer]="selectedOffer"></app-details2>
+        <app-details2 *ngIf="offerSelected" [offer]="selectedOfferCopy" (copyChange)="changeOffer($event)"></app-details2>
       </div>
     </div>
   </div>

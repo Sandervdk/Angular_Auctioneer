@@ -10,18 +10,18 @@ import { Offer } from "../../../../models/offer";
 })
 export class Details2Component implements OnInit {
   @Input() offer: Offer;
-  @Output() copyChange = new EventEmitter();
-  copy : Offer = Object.assign({}, this.offer);
-  auctionStatus = AuctionStatus;
+  @Output() copyChange: EventEmitter<Offer> = new EventEmitter<Offer>();
 
-  constructor() { }
+  auctionStatus: AuctionStatus = AuctionStatus;
+
+  constructor() {
+  }
 
   ngOnInit() {
-
   }
 
   saveOffer() {
-    this.copyChange.emit(this.copy);
+    this.copyChange.emit(this.offer);
   }
 
 }
