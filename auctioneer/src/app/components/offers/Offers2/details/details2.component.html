@@ -4,25 +4,46 @@
       <table class="table" >
         <tr>
           <th>Title:</th>
-          <td>{{offer.title}}</td>
+          <td>
+            <input type="text" value="{{offer.title}}">
+          </td>
         </tr>
         <tr>
           <th>Description:</th>
-          <td>{{offer.description}}</td>
+          <td>
+            <input type="text" value="{{offer.description}}">
+          </td>
         </tr>
         <tr>
           <th>Status:</th>
-          <td>{{offer.auctionStatus}}</td>
+          <td>
+            <select [value]="copy.auctionStatus">
+              <option>{{auctionStatus.NEW}}</option>
+              <option>{{auctionStatus.CLOSED}}</option>
+              <option>{{auctionStatus.DELIVERED}}</option>
+              <option>{{auctionStatus.FOR_SALE}}</option>
+              <option>{{auctionStatus.EXPIRED}}</option>
+              <option>{{auctionStatus.PAID}}</option>
+              <option>{{auctionStatus.SOLD}}</option>
+              <option>{{auctionStatus.WITHDRAWN}}</option>
+            </select>
+          </td>
         </tr>
         <tr>
           <th>Number of Bids:</th>
-          <td>{{offer.numberOfBids}}</td>
+          <td>
+            <input type="number" value="{{offer.numberOfBids}}">
+          </td>
         </tr>
         <tr>
           <th>Highest Bid:</th>
-          <td>{{offer.valueHighestBid}}</td>
+          <td>
+            <input type="number" value="{{offer.valueHighestBid}}">
+          </td>
         </tr>
       </table>
+      <button class="float-right" (click)="saveOffer()">Save</button>
+      <button class="float-right mr-2">Delete</button>
     </div>
   </div>
 </div>

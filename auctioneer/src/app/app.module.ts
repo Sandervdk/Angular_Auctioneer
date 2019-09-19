@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/mainpage/navbar/navbar.component';
 import { OffersComponent } from './components/offers/Offers/offers.component';
 import { Offers2Component } from './components/offers/Offers2/offers2.component';
 import { Details2Component } from './components/offers/Offers2/details/details2.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { Details2Component } from './components/offers/Offers2/details/details2.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

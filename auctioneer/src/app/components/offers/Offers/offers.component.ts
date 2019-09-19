@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuctionStatus } from "../../../models/auctionStatus";
+import { Offer } from "../../../models/offer";
 
 @Component({
   selector: 'app-offers',

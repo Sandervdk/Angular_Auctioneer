@@ -1,4 +1,4 @@
-const enum AuctionStatus {
+export enum AuctionStatus {
   NEW = "NEW",
   FOR_SALE = "FOR_SALE",
   SOLD = "SOLD",

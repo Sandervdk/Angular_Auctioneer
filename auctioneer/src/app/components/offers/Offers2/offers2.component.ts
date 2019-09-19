@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {OffersComponent} from "../Offers/offers.component";
+import {AuctionStatus} from "../../../models/auctionStatus";
+import { Offer } from "../../../models/offer";
 
 @Component({
   selector: 'app-offers2',

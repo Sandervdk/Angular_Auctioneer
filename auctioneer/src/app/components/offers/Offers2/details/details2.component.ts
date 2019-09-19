@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AuctionStatus} from "../../../../models/auctionStatus";
+import { Offer } from "../../../../models/offer";
 
 @Component({
   selector: 'app-details2',
@@ -8,10 +10,18 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class Details2Component implements OnInit {
   @Input() offer: Offer;
+  @Output() copyChange = new EventEmitter();
+  copy : Offer = Object.assign({}, this.offer);
+  auctionStatus = AuctionStatus;
 
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  saveOffer() {
+    this.copyChange.emit(this.copy);
   }
 
 }
