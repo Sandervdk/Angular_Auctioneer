@@ -11,14 +11,14 @@
         </tr>
         </tbody>
       </table>
-      <button (click)="offers.push(addRandomOffer())">Add Offer</button>
+      <button (click)="addRandomOffer()">Add Offer</button>
     </div>
     <div class="col">
       <div>
         <app-details3 *ngIf="offerSelected"
                       [offer]="selectedOfferCopy"
-                      (emitDelete)="deleteOffer()">
-<!--                      (copyChange)="changeOffer($event)"-->
+                      (emitDelete)="deleteOffer()"
+                      (emitChange)="updateOffer($event)">
         </app-details3>
       </div>
     </div>

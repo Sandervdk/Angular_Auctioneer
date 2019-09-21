@@ -11,6 +11,7 @@ import {AuctionStatus} from "../../../../models/auctionStatus";
 export class Details3Component implements OnInit {
   @Input() offer: Offer;
   @Output() emitDelete: EventEmitter<Offer> = new EventEmitter<Offer>();
+  @Output() emitChange: EventEmitter<Offer> = new EventEmitter<Offer>();
   auctionStatus = AuctionStatus;
 
   constructor(private offersService: OffersService) { }
@@ -19,11 +20,7 @@ export class Details3Component implements OnInit {
   }
 
   saveOffer() {
-    for (let i = 0; i < this.offersService.offers.length; i++) {
-      if (this.offersService.offers[i] == this.offersService.selectedOffer) {
-        this.offersService.update(i, this.offer);
-      }
-    }
+    this.emitChange.emit(this.offer);
   }
 
   deleteOffer() {

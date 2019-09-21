@@ -32,7 +32,15 @@ export class Offers3Component implements OnInit {
   }
 
   addRandomOffer() {
-    return this.offersService.addRandomOffer();
+    let newOffer = this.offersService.addRandomOffer();
+
+    //Adds a new offer and displays it instantly, (check is so the first offers that get added in the list don't show)
+    if (this.offers.length >= 7) {
+      this.selectedOffer = newOffer;
+      this.selectedOfferCopy = newOffer;
+      this.offerSelected = true;
+    }
+    this.offersService.offers.push(newOffer);
   }
 
   deleteOffer() {
@@ -40,6 +48,14 @@ export class Offers3Component implements OnInit {
       if (this.offers[i] == this.selectedOffer) {
         this.offersService.remove(i);
         this.offerSelected = false;
+      }
+    }
+  }
+
+  updateOffer(offer: Offer) {
+    for (let i = 0; i < this.offers.length; i++) {
+      if (this.offers[i] == this.selectedOffer) {
+        this.offersService.update(i, offer);
       }
     }
   }
