@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {OffersService} from "../../../../services/offers.service";
 import {Offer} from "../../../../models/offer";
 import {AuctionStatus} from "../../../../models/auctionStatus";
@@ -10,6 +10,7 @@ import {AuctionStatus} from "../../../../models/auctionStatus";
 })
 export class Details3Component implements OnInit {
   @Input() offer: Offer;
+  @Output() emitDelete: EventEmitter<Offer> = new EventEmitter<Offer>();
   auctionStatus = AuctionStatus;
 
   constructor(private offersService: OffersService) { }
@@ -23,5 +24,9 @@ export class Details3Component implements OnInit {
         this.offersService.update(i, this.offer);
       }
     }
+  }
+
+  deleteOffer() {
+    this.emitDelete.emit(this.offer);
   }
 }

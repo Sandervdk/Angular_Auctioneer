@@ -34,4 +34,13 @@ export class Offers3Component implements OnInit {
   addRandomOffer() {
     return this.offersService.addRandomOffer();
   }
+
+  deleteOffer() {
+    for (let i = 0; i < this.offers.length; i++) {
+      if (this.offers[i] == this.selectedOffer) {
+        this.offersService.remove(i);
+        this.offerSelected = false;
+      }
+    }
+  }
 }

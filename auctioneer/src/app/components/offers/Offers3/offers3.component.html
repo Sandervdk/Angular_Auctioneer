@@ -16,9 +16,9 @@
     <div class="col">
       <div>
         <app-details3 *ngIf="offerSelected"
-                      [offer]="selectedOfferCopy">
+                      [offer]="selectedOfferCopy"
+                      (emitDelete)="deleteOffer()">
 <!--                      (copyChange)="changeOffer($event)"-->
-<!--                      (copyDelete)="deleteOffer()">-->
         </app-details3>
       </div>
     </div>

@@ -10,7 +10,6 @@ export class OffersService {
   public offers: Offer[];
   selectedOffer: Offer;
   selectedOfferCopy: Offer;
-  offerSelected: boolean;
 
   constructor() {
     this.offers = [];
@@ -23,7 +22,7 @@ export class OffersService {
   add(offer: Offer): number {
     // TODO: Append the event at the end of the list
     // and return its index
-    console.log(this.offers.indexOf(offer));
+   this.offers[this.offers.length] = offer;
     return this.offers.indexOf(offer);
   }
 
@@ -62,14 +61,7 @@ export class OffersService {
 
     valueHighestBid = parseFloat((Math.random() * 2500).toFixed(2));
     numberOfBids = Math.round(Math.random() * 20);
-    let newOffer: Offer = {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
 
-    //Adds a new offer and displays it instantly, (check is so the first offers that get added in the list don't show)
-    if (this.offers.length >= 8) {
-      this.selectedOffer = newOffer;
-      this.offerSelected = true;
-    }
-
-    return newOffer;
+    return {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
   }
 }
