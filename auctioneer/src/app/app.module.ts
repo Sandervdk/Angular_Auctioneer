@@ -10,6 +10,9 @@ import { OffersComponent } from './components/offers/Offers/offers.component';
 import { Offers2Component } from './components/offers/Offers2/offers2.component';
 import { Details2Component } from './components/offers/Offers2/details/details2.component';
 import {FormsModule} from "@angular/forms";
+import {OffersService} from "./services/offers.service";
+import { Offers3Component } from './components/offers/Offers3/offers3.component';
+import { Details3Component } from './components/offers/Offers3/details/details3.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,16 @@ import {FormsModule} from "@angular/forms";
     NavbarComponent,
     OffersComponent,
     Offers2Component,
-    Details2Component
+    Details2Component,
+    Offers3Component,
+    Details3Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [OffersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
