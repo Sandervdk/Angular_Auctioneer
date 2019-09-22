@@ -10,7 +10,8 @@ import {AuctionStatus} from "../../../../models/auctionStatus";
 })
 export class Details3Component implements OnInit {
   @Input() offer: Offer;
-  @Output() emitDelete: EventEmitter<Offer> = new EventEmitter<Offer>();
+  @Output() emitClear: EventEmitter<any> = new EventEmitter<any>();
+  @Output() emitDelete: EventEmitter<any> = new EventEmitter<any>();
   @Output() emitChange: EventEmitter<Offer> = new EventEmitter<Offer>();
   auctionStatus = AuctionStatus;
 
@@ -24,10 +25,10 @@ export class Details3Component implements OnInit {
   }
 
   deleteOffer() {
-    this.emitDelete.emit(this.offer);
+    this.emitDelete.emit(null);
   }
 
   clearOffer() {
-
+    this.emitClear.emit(null);
   }
 }

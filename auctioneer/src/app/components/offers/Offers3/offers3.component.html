@@ -18,7 +18,8 @@
         <app-details3 *ngIf="offerSelected"
                       [offer]="selectedOfferCopy"
                       (emitDelete)="deleteOffer()"
-                      (emitChange)="updateOffer($event)">
+                      (emitChange)="updateOffer($event)"
+                      (emitClear)="clearOffer()">
         </app-details3>
       </div>
     </div>

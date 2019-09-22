@@ -8,8 +8,6 @@ import {AuctionStatus} from "../models/auctionStatus";
 
 export class OffersService {
   public offers: Offer[];
-  selectedOffer: Offer;
-  selectedOfferCopy: Offer;
 
   constructor() {
     this.offers = [];
@@ -20,20 +18,15 @@ export class OffersService {
 
   // CRUD functionalities for offers
   add(offer: Offer): number {
-    // TODO: Append the event at the end of the list
-    // and return its index
    this.offers.push(offer);
     return this.offers.indexOf(offer);
   }
 
   update(oIdx: number, offer: Offer) {
-    // TODO: replace the identified offer with the provided
     this.offers[oIdx] = offer;
   }
 
   remove(oIdx: number): Offer {
-    // TODO: remove the identified offer from the collection
-    // and return the removed instance
     let trash = this.offers[oIdx];
     this.offers.splice(oIdx, 1);
     return trash;

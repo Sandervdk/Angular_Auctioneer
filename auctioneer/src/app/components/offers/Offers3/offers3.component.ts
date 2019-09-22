@@ -40,9 +40,21 @@ export class Offers3Component implements OnInit {
   }
 
   updateOffer(offer: Offer) {
-    // Updates the selected offer and reselects it so that the change isn't immediately reflected in the left list
     let index = this.offers.indexOf(this.selectedOffer);
-    this.offersService.update(index, offer);
-    this.selectOffer(offer);
+
+    if (index != -1) {
+      // If index of selectedOffer is found, updates the selected offer and reselects it
+      this.offersService.update(index, offer);
+      this.selectOffer(offer);
+    } else {
+      // If index of selectedOffer is not found, adds the new offer to the array
+      this.offersService.add(offer);
+      this.selectOffer(offer);
+    }
+  }
+
+  clearOffer() {
+    // Works in conjunction with updateOffer
+    this.selectOffer(null);
   }
 }
