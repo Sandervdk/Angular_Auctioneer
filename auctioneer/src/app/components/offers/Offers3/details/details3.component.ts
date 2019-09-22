@@ -26,4 +26,8 @@ export class Details3Component implements OnInit {
   deleteOffer() {
     this.emitDelete.emit(this.offer);
   }
+
+  clearOffer() {
+
+  }
 }

@@ -21,42 +21,28 @@ export class Offers3Component implements OnInit {
 
   selectOffer(offer: Offer): void {
     this.offerSelected = true;
-
-    for (let i = 0; i < this.offers.length; i++) {
-      if (this.offers[i] == offer) {
-        //Selects the selected offer and makes a copy of that specific offer
-        this.selectedOffer = this.offers[i];
-        this.selectedOfferCopy = {...this.offers[i]};
-      }
-    }
+    let index = this.offers.indexOf(offer);
+    this.selectedOffer = this.offers[index];
+    this.selectedOfferCopy = {...this.offers[index]};
   }
 
   addRandomOffer() {
     let newOffer = this.offersService.addRandomOffer();
-
-    //Adds a new offer and displays it instantly, (check is so the first offers that get added in the list don't show)
-    if (this.offers.length >= 7) {
-      this.selectedOffer = newOffer;
-      this.selectedOfferCopy = newOffer;
-      this.offerSelected = true;
-    }
-    this.offersService.offers.push(newOffer);
+    this.offersService.add(newOffer);
+    this.selectOffer(newOffer);
   }
 
   deleteOffer() {
-    for (let i = 0; i < this.offers.length; i++) {
-      if (this.offers[i] == this.selectedOffer) {
-        this.offersService.remove(i);
-        this.offerSelected = false;
-      }
-    }
+    // Removes the selected offer and hides details from view
+    let index = this.offers.indexOf(this.selectedOffer);
+    this.offersService.remove(index);
+    this.offerSelected = false;
   }
 
   updateOffer(offer: Offer) {
-    for (let i = 0; i < this.offers.length; i++) {
-      if (this.offers[i] == this.selectedOffer) {
-        this.offersService.update(i, offer);
-      }
-    }
+    // Updates the selected offer and reselects it so that the change isn't immediately reflected in the left list
+    let index = this.offers.indexOf(this.selectedOffer);
+    this.offersService.update(index, offer);
+    this.selectOffer(offer);
   }
 }

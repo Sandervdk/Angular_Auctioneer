@@ -22,7 +22,7 @@ export class OffersService {
   add(offer: Offer): number {
     // TODO: Append the event at the end of the list
     // and return its index
-   this.offers[this.offers.length] = offer;
+   this.offers.push(offer);
     return this.offers.indexOf(offer);
   }
 
