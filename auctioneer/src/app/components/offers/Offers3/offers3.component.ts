@@ -88,7 +88,7 @@ export class Offers3Component implements OnInit {
         this.selectedOffer.auctionStatus !== this.selectedOfferCopy.auctionStatus ||
         this.selectedOffer.sellDate !== this.selectedOfferCopy.sellDate ||
         this.selectedOffer.description !== this.selectedOfferCopy.description) {
-      offerChanged = confirm("Are you sure to discord edited changes?");
+      offerChanged = confirm("Are you sure you want to discard your changes?");
     }
     return offerChanged;
   }
