@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OffersService} from "../../../services/offers.service";
 import {Offer} from "../../../models/offer";
+import {deepEqual} from "assert";
 
 @Component({
   selector: 'app-offers3',
@@ -12,6 +13,7 @@ export class Offers3Component implements OnInit {
   offerSelected: boolean;
   selectedOffer: Offer;
   selectedOfferCopy: Offer;
+  offerChanged: boolean;
 
   constructor(private offersService: OffersService) {}
 
@@ -33,10 +35,12 @@ export class Offers3Component implements OnInit {
   }
 
   deleteOffer() {
-    // Removes the selected offer and hides details from view
-    let index = this.offers.indexOf(this.selectedOffer);
-    this.offersService.remove(index);
-    this.offerSelected = false;
+    if (this.alertUnsavedChanges()) {
+      // Removes the selected offer and hides details from view
+      let index = this.offers.indexOf(this.selectedOffer);
+      this.offersService.remove(index);
+      this.offerSelected = false;
+    }
   }
 
   updateOffer(offer: Offer) {
@@ -55,16 +59,37 @@ export class Offers3Component implements OnInit {
 
   clearOffer() {
     // Works in conjunction with updateOffer
-    this.selectOffer(null);
+    if (this.alertUnsavedChanges()) {
+      this.selectOffer(null);
+    }
   }
 
   resetOffer() {
-    this.selectedOfferCopy = this.selectedOffer;
-    this.selectOffer(this.selectedOfferCopy);
+    if (this.alertUnsavedChanges()) {
+      this.selectedOfferCopy = this.selectedOffer;
+      this.selectOffer(this.selectedOfferCopy);
+    }
   }
 
   cancelChanges() {
-    this.resetOffer();
-    this.offerSelected = false;
+    if (this.alertUnsavedChanges()) {
+      this.resetOffer();
+      this.offerSelected = false;
+    }
+  }
+
+
+  alertUnsavedChanges(): boolean {
+    let offerChanged: boolean = true;
+    //checks every variable of the offer and compares it to the copy version for any change
+    if (this.selectedOffer.title !== this.selectedOfferCopy.title ||
+        this.selectedOffer.valueHighestBid !== this.selectedOfferCopy.valueHighestBid ||
+        this.selectedOffer.numberOfBids !== this.selectedOfferCopy.numberOfBids ||
+        this.selectedOffer.auctionStatus !== this.selectedOfferCopy.auctionStatus ||
+        this.selectedOffer.sellDate !== this.selectedOfferCopy.sellDate ||
+        this.selectedOffer.description !== this.selectedOfferCopy.description) {
+      offerChanged = confirm("Are you sure to discord edited changes?");
+    }
+    return offerChanged;
   }
 }
