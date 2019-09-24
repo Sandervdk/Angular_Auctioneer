@@ -16,6 +16,7 @@ export class Details3Component implements OnInit {
   @Output() emitDelete: EventEmitter<any> = new EventEmitter<any>();
   @Output() emitChange: EventEmitter<Offer> = new EventEmitter<Offer>();
   auctionStatus = AuctionStatus;
+  noChange: boolean = true;
 
   constructor(private offersService: OffersService) { }
 
@@ -31,10 +32,12 @@ export class Details3Component implements OnInit {
   }
 
   clearOffer() {
+    this.noChange = false;
     this.emitClear.emit(null);
   }
 
   resetOffer() {
+    this.noChange = true;
     this.emitReset.emit(null);
   }
 

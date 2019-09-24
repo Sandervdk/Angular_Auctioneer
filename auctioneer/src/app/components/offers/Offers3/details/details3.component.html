@@ -5,20 +5,20 @@
         <tr>
           <th>Title:</th>
           <td>
-            <input type="text" [(ngModel)]="offer.title">
+            <input type="text" [(ngModel)]="offer.title" (keyup)="noChange = false">
           </td>
         </tr>
         <tr>
           <th>Description:</th>
           <td>
-            <input type="text" [(ngModel)]="offer.description">
+            <input type="text" [(ngModel)]="offer.description" (keyup)="noChange = false">
           </td>
         </tr>
         <tr>
           <th>Status:</th>
           <td>
             <label>
-              <select [(ngModel)]="offer.auctionStatus">
+              <select [(ngModel)]="offer.auctionStatus" (change)="noChange = false">
                 <option>{{auctionStatus.NEW}}</option>
                 <option>{{auctionStatus.CLOSED}}</option>
                 <option>{{auctionStatus.DELIVERED}}</option>
@@ -34,21 +34,21 @@
         <tr>
           <th>Number of Bids:</th>
           <td>
-            <input type="number" [(ngModel)]="offer.numberOfBids">
+            <input type="number" [(ngModel)]="offer.numberOfBids" (keyup)="noChange = false">
           </td>
         </tr>
         <tr>
           <th>Highest Bid:</th>
           <td>
-            <input type="number" [(ngModel)]="offer.valueHighestBid">
+            <input type="number" [(ngModel)]="offer.valueHighestBid" (keyup)="noChange = false">
           </td>
         </tr>
       </table>
       <button class="float-right" (click)="cancelChanges()">Cancel</button>
-      <button class="float-right mr-2" (click)="resetOffer()">Reset</button>
+      <button class="float-right mr-2" [disabled]="noChange" (click)="resetOffer()">Reset</button>
       <button class="float-right mr-2" (click)="clearOffer()">Clear</button>
-      <button class="float-right mr-2" (click)="saveOffer()">Save</button>
-      <button class="float-right mr-2" (click)="deleteOffer()">Delete</button>
+      <button class="float-right mr-2" [disabled]="noChange" (click)="saveOffer()">Save</button>
+      <button class="float-right mr-2" [disabled]="!noChange" (click)="deleteOffer()">Delete</button>
     </div>
   </div>
 </div>
