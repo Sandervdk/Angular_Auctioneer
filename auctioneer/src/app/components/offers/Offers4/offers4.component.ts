@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Offer} from "../../../models/offer";
 import {OffersService} from "../../../services/offers.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-offers4',
@@ -14,8 +15,7 @@ export class Offers4Component implements OnInit {
   selectedOfferCopy: Offer;
   offerChanged: boolean;
 
-  constructor(private offersService: OffersService) {
-  }
+  constructor(private offersService: OffersService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.offers = this.offersService.offers;
@@ -26,6 +26,11 @@ export class Offers4Component implements OnInit {
     let index = this.offers.indexOf(offer);
     this.selectedOffer = this.offers[index];
     this.selectedOfferCopy = {...this.offers[index]};
+
+    this.router.navigate(['edit'],{
+      relativeTo: this.route,
+      queryParams: {id: index}
+    })
   }
 
   addRandomOffer() {
@@ -79,17 +84,5 @@ export class Offers4Component implements OnInit {
   }
 
 
-  alertUnsavedChanges(): boolean {
-    let offerChanged: boolean = true;
-    //checks every variable of the offer and compares it to the copy version for any change
-    if (this.selectedOffer.title !== this.selectedOfferCopy.title ||
-      this.selectedOffer.valueHighestBid !== this.selectedOfferCopy.valueHighestBid ||
-      this.selectedOffer.numberOfBids !== this.selectedOfferCopy.numberOfBids ||
-      this.selectedOffer.auctionStatus !== this.selectedOfferCopy.auctionStatus ||
-      this.selectedOffer.sellDate !== this.selectedOfferCopy.sellDate ||
-      this.selectedOffer.description !== this.selectedOfferCopy.description) {
-      offerChanged = confirm("Are you sure you want to discard your changes?");
-    }
-    return offerChanged;
-  }
+
 }

@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'offers3', component: Offers3Component },
 
   { path: 'offers4', component: Offers4Component, children: [
-      {path: ':details4', component: Details4Component}
+      {path: ':details4:', component: Details4Component}
     ]},
 
   { path: '**', component: ErrorComponent },
