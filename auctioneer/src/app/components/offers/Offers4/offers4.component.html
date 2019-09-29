@@ -15,15 +15,16 @@
     </div>
     <div class="col">
       <div>
-        <app-details3 *ngIf="offerSelected; else elseBlock"
-                      [offer]="selectedOfferCopy"
-                      (emitDelete)="deleteOffer()"
-                      (emitChange)="updateOffer($event)"
-                      (emitClear)="clearOffer()"
-                      (emitReset)="resetOffer()"
-                      (emitCancel)="cancelChanges()">
-        </app-details3>
-        <ng-template #elseBlock><br>Select an offer on the left.</ng-template>
+        <!--<app-details3 *ngIf="offerSelected; else elseBlock"-->
+                      <!--[offer]="selectedOfferCopy"-->
+                      <!--(emitDelete)="deleteOffer()"-->
+                      <!--(emitChange)="updateOffer($event)"-->
+                      <!--(emitClear)="clearOffer()"-->
+                      <!--(emitReset)="resetOffer()"-->
+                      <!--(emitCancel)="cancelChanges()">-->
+        <!--</app-details3>-->
+        <!--<ng-template #elseBlock><br>Select an offer on the left.</ng-template>-->
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
