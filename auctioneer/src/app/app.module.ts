@@ -14,12 +14,14 @@ import {OffersService} from "./services/offers.service";
 import { Offers3Component } from './components/offers/Offers3/offers3.component';
 import { Details3Component } from './components/offers/Offers3/details/details3.component';
 import {RouterModule, Routes} from "@angular/router";
+import { ErrorComponent } from './components/mainpage/error/error.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'offers1', component: OffersComponent },
   { path: 'offers2', component: Offers2Component },
   { path: 'offers3', component: Offers3Component },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
     Details2Component,
     Offers3Component,
     Details3Component,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
