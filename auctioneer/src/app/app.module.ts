@@ -18,14 +18,7 @@ import { ErrorComponent } from './components/mainpage/error/error.component';
 import { Offers4Component } from './components/offers/Offers4/offers4.component';
 import { Details4Component } from './components/offers/Offers4/details/details4.component';
 
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'offers1', component: OffersComponent },
-  { path: 'offers2', component: Offers2Component },
-  { path: 'offers3', component: Offers3Component },
-  { path: 'offers4', component: Offers4Component },
-  { path: '**', component: ErrorComponent },
-];
+
 
 @NgModule({
   declarations: [
@@ -46,7 +39,6 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
   ],
   providers: [OffersService],
   bootstrap: [AppComponent]
