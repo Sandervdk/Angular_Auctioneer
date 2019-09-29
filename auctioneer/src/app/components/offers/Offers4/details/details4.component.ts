@@ -11,6 +11,7 @@ import {AuctionStatus} from "../../../../models/auctionStatus";
   styleUrls: ['./details4.component.css']
 })
 export class Details4Component implements OnInit, OnDestroy {
+  @Output() emitCancel: EventEmitter<any> = new EventEmitter<any>();
   auctionStatus = AuctionStatus;
   noChange: boolean = true;
   offers: Offer[];
@@ -20,11 +21,12 @@ export class Details4Component implements OnInit, OnDestroy {
   offer: Offer;
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private offersService: OffersService) {}
+              private offersService: OffersService) {
+  }
 
   ngOnInit() {
     this.offers = this.offersService.offers;
-    this.paramsSubscription = this.route.queryParams.subscribe( (queryParams: Params) => {
+    this.paramsSubscription = this.route.queryParams.subscribe((queryParams: Params) => {
       this.index = queryParams['id'];
       this.editOffer(this.index);
     })
@@ -40,8 +42,13 @@ export class Details4Component implements OnInit, OnDestroy {
   }
 
   saveOffer() {
-    this.offersService.update(this.index, this.offerCopy);
-    this.reroute();
+    if (this.index != null) {
+      this.offersService.update(this.index, this.offerCopy);
+      this.reroute();
+    } else {
+      this.offersService.add(this.offerCopy);
+      this.reroute();
+    }
   }
 
   deleteOffer() {
@@ -53,12 +60,11 @@ export class Details4Component implements OnInit, OnDestroy {
 
   clearOffer() {
     if (this.alertUnsavedChanges()) {
-      this.offerCopy.title = null;
-      this.offerCopy.auctionStatus = null;
-      this.offerCopy.description = null;
-      this.offerCopy.sellDate = null;
-      this.offerCopy.numberOfBids = null;
-      this.offerCopy.valueHighestBid = null;
+      this.index = null;
+      this.offerCopy = {
+        title: null, sellDate: null, numberOfBids: null,
+        valueHighestBid: null, auctionStatus: null, description: null
+      };
     }
   }
 
@@ -71,11 +77,11 @@ export class Details4Component implements OnInit, OnDestroy {
 
   cancelChanges() {
     this.resetOffer();
-    this.reroute();
+    this.index = null;
   }
 
   private reroute() {
-    this.router.navigate(['../'],{
+    this.router.navigate(['../'], {
       relativeTo: this.route
     })
   }

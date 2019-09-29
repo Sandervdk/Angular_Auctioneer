@@ -14,7 +14,9 @@ export class Offers4Component implements OnInit {
   selectedOffer: Offer;
   selectedOfferCopy: Offer;
 
-  constructor(private offersService: OffersService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private offersService: OffersService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.offers = this.offersService.offers;

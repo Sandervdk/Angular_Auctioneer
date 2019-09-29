@@ -14,7 +14,7 @@
       <button (click)="addRandomOffer()">Add Offer</button>
     </div>
     <div class="col">
-      <div>
+      <div *ngIf="offerSelected; else elseBlock">
         <!--<app-details3 *ngIf="offerSelected; else elseBlock"-->
                       <!--[offer]="selectedOfferCopy"-->
                       <!--(emitDelete)="deleteOffer()"-->
@@ -26,6 +26,7 @@
         <!--<ng-template #elseBlock><br>Select an offer on the left.</ng-template>-->
         <router-outlet></router-outlet>
       </div>
+      <ng-template #elseBlock><br>Select an offer on the left.</ng-template>
     </div>
   </div>
 </div>

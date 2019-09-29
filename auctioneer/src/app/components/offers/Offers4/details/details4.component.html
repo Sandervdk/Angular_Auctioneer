@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <table class="table" >
+    <div class="col" *ngIf="index != null; else elseBlock">
+      <table class="table">
         <tr>
           <th>Title:</th>
           <td>
@@ -50,5 +50,6 @@
       <button class="float-right mr-2" [disabled]="noChange" (click)="saveOffer()">Save</button>
       <button class="float-right mr-2" [disabled]="!noChange" (click)="deleteOffer()">Delete</button>
     </div>
+    <p *ngIf="index == null"><br>Select an offer on the left.</p>
   </div>
 </div>
