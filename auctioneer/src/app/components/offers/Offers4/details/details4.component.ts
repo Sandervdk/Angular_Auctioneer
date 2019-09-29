@@ -37,7 +37,6 @@ export class Details4Component implements OnInit, OnDestroy {
   }
 
   private editOffer(index: number): void {
-    this.offerSelected = true;
     this.offer = this.offersService.offers[index];
     this.offerCopy = {...this.offer};
   }
@@ -62,10 +61,11 @@ export class Details4Component implements OnInit, OnDestroy {
   clearOffer() {
     if (this.alertUnsavedChanges()) {
       this.index = null;
-      this.offerCopy = {
+      this.offer = {
         title: null, sellDate: null, numberOfBids: null,
         valueHighestBid: null, auctionStatus: null, description: null
       };
+      this.offerCopy = {...this.offer};
     }
   }
 
@@ -77,8 +77,11 @@ export class Details4Component implements OnInit, OnDestroy {
   }
 
   cancelChanges() {
-    this.resetOffer();
-    this.reroute();
+    if (this.alertUnsavedChanges()) {
+      this.noChange = true;
+      this.offerCopy = {...this.offer};
+      this.reroute();
+    }
   }
 
   private reroute() {
@@ -87,7 +90,7 @@ export class Details4Component implements OnInit, OnDestroy {
     })
   }
 
-  alertUnsavedChanges(): boolean {
+  private alertUnsavedChanges(): boolean {
     let offerChanged: boolean = true;
     //checks every variable of the offer and compares it to the copy version for any change
     if (this.offerCopy.title !== this.offer.title ||
