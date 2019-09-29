@@ -13,6 +13,14 @@ import {FormsModule} from "@angular/forms";
 import {OffersService} from "./services/offers.service";
 import { Offers3Component } from './components/offers/Offers3/offers3.component';
 import { Details3Component } from './components/offers/Offers3/details/details3.component';
+import {RouterModule, Routes} from "@angular/router";
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'offers1', component: OffersComponent },
+  { path: 'offers2', component: Offers2Component },
+  { path: 'offers3', component: Offers3Component },
+];
 
 @NgModule({
   declarations: [
@@ -29,7 +37,8 @@ import { Details3Component } from './components/offers/Offers3/details/details3.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [OffersService],
   bootstrap: [AppComponent]
