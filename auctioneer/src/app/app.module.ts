@@ -13,7 +13,6 @@ import {FormsModule} from "@angular/forms";
 import {OffersService} from "./services/offers.service";
 import { Offers3Component } from './components/offers/Offers3/offers3.component';
 import { Details3Component } from './components/offers/Offers3/details/details3.component';
-import {RouterModule, Routes} from "@angular/router";
 import { ErrorComponent } from './components/mainpage/error/error.component';
 import { Offers4Component } from './components/offers/Offers4/offers4.component';
 import { Details4Component } from './components/offers/Offers4/details/details4.component';
