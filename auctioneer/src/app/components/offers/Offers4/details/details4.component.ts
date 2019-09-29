@@ -37,8 +37,11 @@ export class Details4Component implements OnInit, OnDestroy {
   }
 
   private editOffer(index: number): void {
-    this.offer = this.offersService.offers[index];
-    this.offerCopy = {...this.offer};
+    if (!(index >= this.offers.length)) {
+      this.offer = this.offersService.offers[index];
+      this.offerCopy = {...this.offer};
+      // If an index larger than the size of the offers array is typed into the URL, redirects back to /offers4
+    } else this.router.navigate(['..'], {relativeTo: this.route});
   }
 
   saveOffer() {
@@ -46,6 +49,7 @@ export class Details4Component implements OnInit, OnDestroy {
       this.offersService.update(this.index, this.offerCopy);
       this.reroute();
     } else {
+      // If index == null, offer is a new instance and therefore pushed onto the array
       this.offersService.add(this.offerCopy);
       this.reroute();
     }
@@ -59,6 +63,7 @@ export class Details4Component implements OnInit, OnDestroy {
   }
 
   clearOffer() {
+    // Used to clear the form to make a new offer
     if (this.alertUnsavedChanges()) {
       this.index = null;
       this.offer = {
