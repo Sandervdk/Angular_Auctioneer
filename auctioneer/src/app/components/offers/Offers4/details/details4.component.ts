@@ -37,6 +37,7 @@ export class Details4Component implements OnInit, OnDestroy {
   }
 
   private editOffer(index: number): void {
+    this.offerSelected = true;
     this.offer = this.offersService.offers[index];
     this.offerCopy = {...this.offer};
   }
@@ -77,7 +78,7 @@ export class Details4Component implements OnInit, OnDestroy {
 
   cancelChanges() {
     this.resetOffer();
-    this.index = null;
+    this.reroute();
   }
 
   private reroute() {
