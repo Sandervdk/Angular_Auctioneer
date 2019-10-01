@@ -6,9 +6,9 @@
           <th>Title</th>
         </tr>
         <tbody>
-          <tr class="offer" *ngFor="let offer of offers">
-            <td (click)="selectOffer(offer)">{{offer.title}}</td>
-          </tr>
+        <tr class="offer" *ngFor="let offer of offers">
+          <td (click)="selectOffer(offer)">{{offer.title}}</td>
+        </tr>
         </tbody>
       </table>
       <button (click)="offers.push(addRandomOffer())">Add Offer</button>

@@ -11,7 +11,6 @@ import {AuctionStatus} from "../../../../models/auctionStatus";
   styleUrls: ['./details4.component.css']
 })
 export class Details4Component implements OnInit, OnDestroy {
-  @Output() emitCancel: EventEmitter<any> = new EventEmitter<any>();
   auctionStatus = AuctionStatus;
   noChange: boolean = true;
   offers: Offer[];

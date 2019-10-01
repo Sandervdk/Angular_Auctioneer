@@ -10,9 +10,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class Offers4Component implements OnInit {
   offers: Offer[] = [];
-  offerSelected: boolean;
-  selectedOffer: Offer;
-  selectedOfferCopy: Offer;
 
   constructor(private offersService: OffersService,
               private router: Router,
@@ -23,10 +20,7 @@ export class Offers4Component implements OnInit {
   }
 
   selectOffer(offer: Offer): void {
-    this.offerSelected = true;
     let index = this.offers.indexOf(offer);
-    this.selectedOffer = this.offers[index];
-    this.selectedOfferCopy = {...this.offers[index]};
 
     this.router.navigate(['edit'],{
       relativeTo: this.route,
