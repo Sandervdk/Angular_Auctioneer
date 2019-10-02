@@ -37,6 +37,7 @@ export class Details4Component implements OnInit, OnDestroy {
 
   private editOffer(index: number): void {
     if (!(index >= this.offers.length)) {
+      this.noChange = true;
       this.offer = this.offersService.offers[index];
       this.offerCopy = {...this.offer};
       // If an index larger than the size of the offers array is typed into the URL, redirects back to /offers4
