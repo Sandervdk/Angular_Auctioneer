@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-error',
@@ -8,10 +9,18 @@ import {Router} from "@angular/router";
 })
 export class ErrorComponent implements OnInit {
   route : string = this.router.url;
+  paramsSubscription : Subscription;
 
-  constructor(private router : Router) { }
+  constructor(private router : Router,
+              private activatedRoute : ActivatedRoute) { }
 
   ngOnInit() {
+    this.paramsSubscription = this.activatedRoute.url
+      .subscribe(
+        (event) => {
+          this.route = '/' + event[0].toString();
+        }
+      )
   }
 
 }
