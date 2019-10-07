@@ -7,10 +7,10 @@ import {AuctionStatus} from "../../../../models/auctionStatus";
 
 @Component({
   selector: 'app-details4',
-  templateUrl: './details4.component.html',
-  styleUrls: ['./details4.component.css']
+  templateUrl: './details5.component.html',
+  styleUrls: ['./details5.component.css']
 })
-export class Details4Component implements OnInit, OnDestroy {
+export class Details5Component implements OnInit, OnDestroy {
   auctionStatus = AuctionStatus;
   noChange: boolean = true;
   offers: Offer[];
