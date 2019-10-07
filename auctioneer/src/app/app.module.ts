@@ -9,7 +9,7 @@ import { NavbarComponent } from './components/mainpage/navbar/navbar.component';
 import { OffersComponent } from './components/offers/Offers/offers.component';
 import { Offers2Component } from './components/offers/Offers2/offers2.component';
 import { Details2Component } from './components/offers/Offers2/details/details2.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {OffersService} from "./services/offers.service";
 import { Offers3Component } from './components/offers/Offers3/offers3.component';
 import { Details3Component } from './components/offers/Offers3/details/details3.component';
@@ -40,6 +40,7 @@ import { Details5Component } from './components/offers/Offers5/details/details5.
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [OffersService],
   bootstrap: [AppComponent]

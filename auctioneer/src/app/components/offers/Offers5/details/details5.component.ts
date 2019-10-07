@@ -1,9 +1,10 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Offer} from "../../../../models/offer";
 import {Subscription} from "rxjs";
 import {OffersService} from "../../../../services/offers.service";
 import {AuctionStatus} from "../../../../models/auctionStatus";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-details4',
@@ -11,6 +12,9 @@ import {AuctionStatus} from "../../../../models/auctionStatus";
   styleUrls: ['./details5.component.css']
 })
 export class Details5Component implements OnInit, OnDestroy {
+  @ViewChild('editForm', {static: false})
+  private detailForm: NgForm;
+
   auctionStatus = AuctionStatus;
   noChange: boolean = true;
   offers: Offer[];
@@ -34,6 +38,7 @@ export class Details5Component implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.paramsSubscription.unsubscribe();
   }
+
 
   private editOffer(index: number): void {
     if (!(index >= this.offers.length)) {
@@ -108,5 +113,4 @@ export class Details5Component implements OnInit, OnDestroy {
     }
     return offerChanged;
   }
-
 }
