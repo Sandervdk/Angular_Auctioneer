@@ -113,4 +113,12 @@ export class Details5Component implements OnInit, OnDestroy {
     }
     return offerChanged;
   }
+
+  markAsPristine(valid: boolean, element: HTMLElement): void {
+    if (valid) {
+      element.classList.add("improved");
+    } else {
+      element.classList.remove("improved");
+    }
+  }
 }
