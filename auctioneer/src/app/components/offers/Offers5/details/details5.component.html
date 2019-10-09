@@ -6,21 +6,23 @@
           <tr>
             <th>Title:</th>
             <td>
-              <input type="text" [(ngModel)]="offerCopy.title" name="title" (keyup)="noChange = false" required>
+              <input type="text" [(ngModel)]="offerCopy.title" name="title"
+                     (keyup)="noChange = false" minLength="3" ngModel required>
             </td>
           </tr>
           <tr>
             <th>Description:</th>
             <td>
               <input type="text" [(ngModel)]="offerCopy.description" name="description"
-                     (keyup)="noChange = false" required>
+                     (keyup)="noChange = false" ngModel>
             </td>
           </tr>
           <tr>
             <th>Status:</th>
             <td>
               <label>
-                <select [(ngModel)]="offerCopy.auctionStatus" type="select" name="auctionStatus" (change)="noChange = false" required>
+                <select [(ngModel)]="offerCopy.auctionStatus" type="select" name="auctionStatus"
+                        (change)="noChange = false" ngModel required>
                   <option>{{auctionStatus.NEW}}</option>
                   <option>{{auctionStatus.CLOSED}}</option>
                   <option>{{auctionStatus.DELIVERED}}</option>
@@ -37,7 +39,7 @@
             <th>Number of Bids:</th>
             <td>
               <input type="number" [(ngModel)]="offerCopy.numberOfBids" name="numberOfBids" (change)="noChange = false"
-                     (keyup)="noChange = false" required>
+                     (keyup)="noChange = false" ngModel required>
             </td>
           </tr>
           <tr>
@@ -45,7 +47,7 @@
             <td>
               <input type="number" [(ngModel)]="offerCopy.valueHighestBid" name="valueHighestBid"
                      (change)="noChange = false"
-                     (keyup)="noChange = false" required>
+                     (keyup)="noChange = false" ngModel required>
             </td>
           </tr>
         </table>

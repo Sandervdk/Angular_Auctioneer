@@ -12,8 +12,7 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./details5.component.css']
 })
 export class Details5Component implements OnInit, OnDestroy {
-  @ViewChild('editForm', {static: false})
-  private detailForm: NgForm;
+  @ViewChild('editForm', {static: false}) detailForm: NgForm;
 
   auctionStatus = AuctionStatus;
   noChange: boolean = true;
@@ -32,7 +31,7 @@ export class Details5Component implements OnInit, OnDestroy {
     this.paramsSubscription = this.route.queryParams.subscribe((queryParams: Params) => {
       this.index = queryParams['id'];
       this.editOffer(this.index);
-    })
+    });
   }
 
   ngOnDestroy() {

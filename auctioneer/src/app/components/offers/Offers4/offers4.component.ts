@@ -19,8 +19,8 @@ export class Offers4Component implements OnInit {
     this.offers = this.offersService.offers;
   }
 
-  selectOffer(offer: Offer): void {
-    let index = this.offers.indexOf(offer);
+  selectOffer(index: number): void {
+    // let index = this.offers.indexOf(offer);
 
     this.router.navigate(['edit'],{
       relativeTo: this.route,
@@ -31,7 +31,7 @@ export class Offers4Component implements OnInit {
   addRandomOffer() {
     let newOffer = this.offersService.addRandomOffer();
     this.offersService.add(newOffer);
-    this.selectOffer(newOffer);
+    this.selectOffer(this.offers.indexOf(newOffer));
   }
 
 }

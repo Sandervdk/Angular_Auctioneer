@@ -8,8 +8,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="offer" *ngFor="let offer of offers">
-          <td (click)="selectOffer(offer)">{{offer.title}}</td>
+        <tr class="offer" *ngFor="let offer of offers; let i = index">
+          <td (click)="selectOffer(i)">{{offer.title}}</td>
         </tr>
         </tbody>
       </table>
