@@ -7,14 +7,16 @@
             <th>Title:</th>
             <td>
               <input type="text" [(ngModel)]="offerCopy.title" name="title"
-                     (keyup)="noChange = false" minLength="3" ngModel required>
+                     (keyup)="noChange = false; markAsPristine(title.valid, $event.target)"
+                     required minlength="6" pattern="[a-zA-Z0-9 ]*" #title="ngModel">
             </td>
           </tr>
           <tr>
             <th>Description:</th>
             <td>
               <input type="text" [(ngModel)]="offerCopy.description" name="description"
-                     (keyup)="noChange = false" ngModel>
+                     (keyup)="noChange = false; markAsPristine(description.valid, $event.target)"
+                     required minlength="8" pattern="[a-zA-Z0-9 ]*" #description="ngModel">
             </td>
           </tr>
           <tr>
@@ -38,24 +40,26 @@
           <tr>
             <th>Number of Bids:</th>
             <td>
-              <input type="number" [(ngModel)]="offerCopy.numberOfBids" name="numberOfBids" (change)="noChange = false"
-                     (keyup)="noChange = false" ngModel required>
+              <input type="number" [(ngModel)]="offerCopy.numberOfBids" name="numberOfBids"
+                     (change)="noChange = false; markAsPristine(numberOfBids.valid, $event.target)"
+                     (keyup)="noChange = false;" required #numberOfBids="ngModel" >
             </td>
           </tr>
           <tr>
             <th>Highest Bid:</th>
             <td>
               <input type="number" [(ngModel)]="offerCopy.valueHighestBid" name="valueHighestBid"
-                     (change)="noChange = false"
-                     (keyup)="noChange = false" ngModel required>
+                     (change)="noChange = false; markAsPristine(highestBid.valid, $event.target)"
+                     (keyup)="noChange = false" ngModel #highestBid="ngModel" [required]="numberOfBids.value > 0">
             </td>
           </tr>
         </table>
         <button type="button" class="float-right" (click)="cancelChanges()">Cancel</button>
         <button type="button" class="float-right mr-2" [disabled]="noChange" (click)="resetOffer()">Reset</button>
         <button type="button" class="float-right mr-2" (click)="clearOffer()">Clear</button>
-        <button type="button" class="float-right mr-2" [disabled]="noChange" (click)="saveOffer()">Save</button>
+        <button type="button" class="float-right mr-2" [disabled]="noChange || !detailForm.valid" (click)="saveOffer()">Save</button>
         <button type="button" class="float-right mr-2" [disabled]="!noChange" (click)="deleteOffer()">Delete</button>
+        <span class="text-capitalize" *ngIf="!editForm.valid && editForm.touched">Ongeldig formulier</span>
       </form>
     </div>
   </div>
