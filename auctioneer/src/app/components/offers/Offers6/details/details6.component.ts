@@ -2,10 +2,11 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Offer} from "../../../../models/offer";
 import {Subscription} from "rxjs";
-import {OffersService} from "../../../../services/offers.service";
 import {AuctionStatus} from "../../../../models/auctionStatus";
 import {NgForm} from "@angular/forms";
 import {Offers2Service} from "../../../../services/offers2.service";
+import {catchError, map} from "rxjs/operators";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-details6',
@@ -30,6 +31,7 @@ export class Details6Component implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.offers = this.offersService.offers;
+
     this.paramsSubscription = this.route.queryParams.subscribe((queryParams: Params) => {
       this.index = queryParams['id'];
       this.editOffer(this.index);

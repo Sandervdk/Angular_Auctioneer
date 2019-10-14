@@ -10,18 +10,26 @@ import {Offers2Service} from "../../../services/offers2.service";
   styleUrls: ['./offers6.component.css']
 })
 export class Offers6Component implements OnInit {
-  offers: Offer[] = [];
+  offers: any = [];
 
   constructor(private offersService: Offers2Service,
               private router: Router,
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.offers = this.offersService.offers;
+    // this.offers = this.offersService.offers;
+
+    this.offersService.getAllOffers()
+      .subscribe(
+        (offers) => {
+          this.offers = offers;
+        }
+      )
   }
 
   selectOffer(index: number): void {
     // let index = this.offers.indexOf(offer);
+    this.offersService.setOffers(this.offers);
 
     this.router.navigate(['edit'],{
       relativeTo: this.route,

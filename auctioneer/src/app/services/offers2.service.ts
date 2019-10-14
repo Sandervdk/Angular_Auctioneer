@@ -2,30 +2,35 @@ import {Injectable} from "@angular/core";
 import {Offer} from "../models/offer";
 import {AuctionStatus} from "../models/auctionStatus";
 import {HttpClient} from "@angular/common/http";
+import {catchError, retry} from "rxjs/operators";
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class Offers2Service {
-  private link = 'https://ng-auctioneer-is205-5.firebaseio.com/';
   public offers: Offer[];
 
+  private link = 'https://ng-auctioneer-is205-5.firebaseio.com/offers';
+
   constructor(private http: HttpClient) {
-    this.offers = [];
-    for (let i = 0; i < 7; i++) {
-      this.offers.push(this.addRandomOffer());
-    }
+    // this.offers = [];
+    // for (let i = 0; i < 7; i++) {
+    //   this.offers.push(this.addRandomOffer());
+    // }
   }
 
   // CRUD functionalities for offers
   add(offer: Offer): number {
     this.offers.push(offer);
+    this.saveAllOffers();
     return this.offers.indexOf(offer);
   }
 
   update(oIdx: number, offer: Offer) {
     this.offers[oIdx] = offer;
+    this.saveAllOffers();
   }
 
   remove(oIdx: number): Offer {
@@ -60,7 +65,20 @@ export class Offers2Service {
     return {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
   }
 
-  getDatabase() {
-    return this.http.get(this.link);
+  getAllOffers(): Observable<Offer[]> {
+    return this.http.get<Offer[]>(this.link + '.json')
+      .pipe(
+        retry(2),
+        catchError((err) => of (err))
+      )
+
+  }
+
+  saveAllOffers() {
+    this.http.put(this.link, this.offers);
+  }
+
+  setOffers(offers: any) {
+    this.offers = offers;
   }
 }

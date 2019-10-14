@@ -6,7 +6,7 @@
           <tr>
             <th>Title:</th>
             <td>
-              <input type="text" [(ngModel)]="offerCopy.title" name="title"
+              <input type="text" [(ngModel)]="(offerCopy).title" name="title"
                      (keyup)="noChange = false; markAsPristine(title.valid, $event.target)"
                      required minlength="6" pattern="[a-zA-Z0-9 ]*" #title="ngModel">
             </td>
