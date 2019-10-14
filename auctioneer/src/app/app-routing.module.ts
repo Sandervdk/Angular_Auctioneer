@@ -8,6 +8,8 @@ import {Offers4Component} from "./components/offers/Offers4/offers4.component";
 import {ErrorComponent} from "./components/mainpage/error/error.component";
 import {Details4Component} from "./components/offers/Offers4/details/details4.component";
 import {Details5Component} from "./components/offers/Offers5/details/details5.component";
+import {Offers6Component} from "./components/offers/Offers6/offers6.component";
+import {Details6Component} from "./components/offers/Offers6/details/details6.component";
 
 
 const appRoutes: Routes = [
@@ -22,6 +24,10 @@ const appRoutes: Routes = [
 
   { path: 'offers5', component: Offers4Component, children: [
       {path: ':details5:', component: Details5Component}
+    ]},
+
+  { path: 'offers6', component: Offers6Component, children: [
+      {path: ':details6:', component: Details6Component}
     ]},
 
   { path: '**', component: ErrorComponent },

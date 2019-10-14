@@ -5,13 +5,14 @@ import {Subscription} from "rxjs";
 import {OffersService} from "../../../../services/offers.service";
 import {AuctionStatus} from "../../../../models/auctionStatus";
 import {NgForm} from "@angular/forms";
+import {Offers2Service} from "../../../../services/offers2.service";
 
 @Component({
-  selector: 'app-details5',
-  templateUrl: './details5.component.html',
-  styleUrls: ['./details5.component.css']
+  selector: 'app-details6',
+  templateUrl: './details6.component.html',
+  styleUrls: ['./details6.component.css']
 })
-export class Details5Component implements OnInit, OnDestroy {
+export class Details6Component implements OnInit, OnDestroy {
   @ViewChild('editForm', {static: false}) detailForm: NgForm;
 
   auctionStatus = AuctionStatus;
@@ -22,8 +23,9 @@ export class Details5Component implements OnInit, OnDestroy {
   offerCopy: Offer;
   offer: Offer;
 
-  constructor(private route: ActivatedRoute, private router: Router,
-              private offersService: OffersService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private offersService: Offers2Service) {
   }
 
   ngOnInit() {

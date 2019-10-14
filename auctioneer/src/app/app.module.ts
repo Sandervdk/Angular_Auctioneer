@@ -17,6 +17,10 @@ import { ErrorComponent } from './components/mainpage/error/error.component';
 import { Offers4Component } from './components/offers/Offers4/offers4.component';
 import { Details4Component } from './components/offers/Offers4/details/details4.component';
 import { Details5Component } from './components/offers/Offers5/details/details5.component';
+import {Offers2Service} from "./services/offers2.service";
+import { Offers6Component } from './components/offers/Offers6/offers6.component';
+import { Details6Component } from './components/offers/Offers6/details/details6.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -35,14 +39,17 @@ import { Details5Component } from './components/offers/Offers5/details/details5.
     Offers4Component,
     Details4Component,
     Details5Component,
+    Offers6Component,
+    Details6Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [OffersService],
+  providers: [OffersService, Offers2Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
