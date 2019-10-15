@@ -13,8 +13,6 @@ export class Offers2Service {
   public offers: Offer[];
 
   private link = 'https://ng-auctioneer-is205-5.firebaseio.com/offers';
-  private httpHeaders = new HttpHeaders(
-    {'Access-Control-Allow-Origin': '*'});
 
   constructor(private http: HttpClient) {
     // this.offers = [];
@@ -68,15 +66,16 @@ export class Offers2Service {
   getAllOffers(): Observable<Offer[]> {
     return this.http.get<Offer[]>(this.link + '.json')
       .pipe(
-        retry(2),
+        retry(2), // retry a failed request twice
         catchError((err) => of (err))
       )
 
   }
 
   saveAllOffers() {
-    return this.http.put(this.link + '.json', this.offers, {headers: this.httpHeaders})
+    return this.http.put(this.link + '.json', this.offers)
       .pipe(
+        retry(2), // retry a failed request twice
         catchError((err) => of (err))
       );
   }

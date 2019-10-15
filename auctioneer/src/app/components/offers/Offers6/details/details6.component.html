@@ -54,7 +54,8 @@
             </td>
           </tr>
         </table>
-        <span class="text-capitalize float-left" *ngIf="!editForm.valid && editForm.touched">Form is invalid!</span>
+        <span class="text-capitalize text-danger float-right" *ngIf="!editForm.valid && editForm.touched">Form is invalid!</span>
+        <br>
         <button type="button" class="float-right" (click)="cancelChanges()">Cancel</button>
         <button type="button" class="float-right mr-2" [disabled]="noChange" (click)="resetOffer()">Reset</button>
         <button type="button" class="float-right mr-2" (click)="clearOffer()">Clear</button>
