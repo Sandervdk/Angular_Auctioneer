@@ -38,6 +38,7 @@ export class Offers6Component implements OnInit {
   }
 
   addRandomOffer() {
+    this.offersService.setOffers(this.offers);
     let newOffer = this.offersService.addRandomOffer();
     this.offersService.add(newOffer);
     this.selectOffer(this.offers.indexOf(newOffer));

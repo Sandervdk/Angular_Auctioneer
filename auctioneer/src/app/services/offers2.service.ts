@@ -83,5 +83,8 @@ export class Offers2Service {
 
   setOffers(offers: any) {
     this.offers = offers;
+    this.saveAllOffers().subscribe(
+      () => {}
+    )
   }
 }
