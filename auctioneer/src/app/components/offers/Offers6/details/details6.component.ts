@@ -55,10 +55,12 @@ export class Details6Component implements OnInit, OnDestroy {
   saveOffer() {
     if (this.index != null) {
       this.offersService.update(this.index, this.offerCopy);
+      this.updateDatabase();
       this.reroute();
     } else {
       // If index == null, offer is a new instance and therefore pushed onto the array
       this.offersService.add(this.offerCopy);
+      this.updateDatabase();
       this.reroute();
     }
   }
@@ -66,6 +68,7 @@ export class Details6Component implements OnInit, OnDestroy {
   deleteOffer() {
     if (this.alertUnsavedChanges() && this.index != null) {
       this.offersService.remove(this.index);
+      this.updateDatabase();
       this.reroute();
     }
   }
@@ -123,5 +126,13 @@ export class Details6Component implements OnInit, OnDestroy {
     } else {
       element.classList.remove("improved");
     }
+  }
+
+  updateDatabase() {
+    this.offersService.saveAllOffers().subscribe(
+      response => {
+        // this.reroute();
+      }
+    );
   }
 }

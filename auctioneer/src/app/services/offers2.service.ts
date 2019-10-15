@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Offer} from "../models/offer";
 import {AuctionStatus} from "../models/auctionStatus";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, retry} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 
@@ -13,6 +13,8 @@ export class Offers2Service {
   public offers: Offer[];
 
   private link = 'https://ng-auctioneer-is205-5.firebaseio.com/offers';
+  private httpHeaders = new HttpHeaders(
+    {'Access-Control-Allow-Origin': '*'});
 
   constructor(private http: HttpClient) {
     // this.offers = [];
@@ -24,13 +26,11 @@ export class Offers2Service {
   // CRUD functionalities for offers
   add(offer: Offer): number {
     this.offers.push(offer);
-    this.saveAllOffers();
     return this.offers.indexOf(offer);
   }
 
   update(oIdx: number, offer: Offer) {
     this.offers[oIdx] = offer;
-    this.saveAllOffers();
   }
 
   remove(oIdx: number): Offer {
@@ -75,7 +75,10 @@ export class Offers2Service {
   }
 
   saveAllOffers() {
-    this.http.put(this.link, this.offers);
+    return this.http.put(this.link + '.json', this.offers, {headers: this.httpHeaders})
+      .pipe(
+        catchError((err) => of (err))
+      );
   }
 
   setOffers(offers: any) {
