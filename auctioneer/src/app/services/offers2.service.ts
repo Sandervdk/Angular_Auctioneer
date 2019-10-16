@@ -69,7 +69,6 @@ export class Offers2Service {
         retry(2), // retry a failed request twice
         catchError((err) => of (err))
       )
-
   }
 
   saveAllOffers() {

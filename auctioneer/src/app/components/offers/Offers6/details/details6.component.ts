@@ -5,6 +5,7 @@ import {Subscription} from "rxjs";
 import {AuctionStatus} from "../../../../models/auctionStatus";
 import {NgForm} from "@angular/forms";
 import {Offers2Service} from "../../../../services/offers2.service";
+import {EnumValue} from "@angular/compiler-cli/src/ngtsc/partial_evaluator";
 
 @Component({
   selector: 'app-details6',
@@ -21,6 +22,7 @@ export class Details6Component implements OnInit, OnDestroy {
   index: number;
   offerCopy: Offer;
   offer: Offer;
+  status: string[] = Object.keys(this.auctionStatus);
 
   constructor(private route: ActivatedRoute,
               private router: Router,

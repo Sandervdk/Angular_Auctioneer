@@ -25,14 +25,7 @@
               <label>
                 <select [(ngModel)]="offerCopy.auctionStatus" type="select" name="auctionStatus"
                         (change)="noChange = false" ngModel required>
-                  <option>{{auctionStatus.NEW}}</option>
-                  <option>{{auctionStatus.CLOSED}}</option>
-                  <option>{{auctionStatus.DELIVERED}}</option>
-                  <option>{{auctionStatus.FOR_SALE}}</option>
-                  <option>{{auctionStatus.EXPIRED}}</option>
-                  <option>{{auctionStatus.PAID}}</option>
-                  <option>{{auctionStatus.SOLD}}</option>
-                  <option>{{auctionStatus.WITHDRAWN}}</option>
+                  <option *ngFor="let status of status">{{status}}</option>
                 </select>
               </label>
             </td>
