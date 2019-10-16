@@ -1,12 +1,10 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Offer} from "../../../../models/offer";
 import {Subscription} from "rxjs";
 import {AuctionStatus} from "../../../../models/auctionStatus";
 import {NgForm} from "@angular/forms";
 import {Offers2Service} from "../../../../services/offers2.service";
-import {catchError, map} from "rxjs/operators";
-import {of} from "rxjs";
 
 @Component({
   selector: 'app-details6',
@@ -27,6 +25,7 @@ export class Details6Component implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private offersService: Offers2Service) {
+
   }
 
   ngOnInit() {
@@ -34,9 +33,15 @@ export class Details6Component implements OnInit, OnDestroy {
 
     this.paramsSubscription = this.route.queryParams.subscribe((queryParams: Params) => {
       this.index = queryParams['id'];
-      this.editOffer(this.index);
+      if (this.offers !== undefined) {
+        this.editOffer(this.index);
+        this.isLoaded = true;
+      } else {
+        this.isLoaded = false;
+      }
     });
   }
+
 
   ngOnDestroy() {
     this.paramsSubscription.unsubscribe();

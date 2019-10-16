@@ -11,27 +11,31 @@ import {Offers2Service} from "../../../services/offers2.service";
 })
 export class Offers6Component implements OnInit {
   offers: any = [];
+  isLoaded: boolean;
 
   constructor(private offersService: Offers2Service,
               private router: Router,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     // this.offers = this.offersService.offers;
+    this.isLoaded = false;
 
     this.offersService.getAllOffers()
       .subscribe(
         (offers) => {
+          this.offersService.offers = offers;
           this.offers = offers;
-        }
-      )
+          this.isLoaded = true;
+        })
   }
 
   selectOffer(index: number): void {
     // let index = this.offers.indexOf(offer);
     this.offersService.setOffers(this.offers);
 
-    this.router.navigate(['edit'],{
+    this.router.navigate(['edit'], {
       relativeTo: this.route,
       queryParams: {id: index}
     })

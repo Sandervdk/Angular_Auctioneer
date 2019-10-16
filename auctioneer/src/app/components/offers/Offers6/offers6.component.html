@@ -26,7 +26,7 @@
         <!--(emitCancel)="cancelChanges()">-->
         <!--</app-details3>-->
         <!--<ng-template #elseBlock><br>Select an offer on the left.</ng-template>-->
-        <router-outlet></router-outlet>
+        <router-outlet *ngIf="isLoaded"></router-outlet>
       </div>
       <p *ngIf="!router.url.includes('edit')"><br>Select an offer on the left.</p>
     </div>
