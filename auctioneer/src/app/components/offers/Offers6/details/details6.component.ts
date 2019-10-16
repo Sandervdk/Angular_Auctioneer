@@ -35,9 +35,6 @@ export class Details6Component implements OnInit, OnDestroy {
       this.index = queryParams['id'];
       if (this.offers !== undefined) {
         this.editOffer(this.index);
-        this.isLoaded = true;
-      } else {
-        this.isLoaded = false;
       }
     });
   }
