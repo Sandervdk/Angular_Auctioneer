@@ -21,6 +21,7 @@ import {Offers2Service} from "./services/offers2.service";
 import { Offers6Component } from './components/offers/Offers6/offers6.component';
 import { Details6Component } from './components/offers/Offers6/details/details6.component';
 import {HttpClientModule} from "@angular/common/http";
+import { AppFbComponent } from './app-fb/app-fb.component';
 
 
 
@@ -41,6 +42,7 @@ import {HttpClientModule} from "@angular/common/http";
     Details5Component,
     Offers6Component,
     Details6Component,
+    AppFbComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,6 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule
   ],
   providers: [OffersService, Offers2Service],
-  bootstrap: [AppComponent]
+  bootstrap: [AppFbComponent]
 })
 export class AppModule { }
