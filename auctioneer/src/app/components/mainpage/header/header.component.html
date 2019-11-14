@@ -1,12 +1,31 @@
-<div class="container-fluid d-flex">
-  <img class="img-fluid" src="../../../assets/christies-auction.jpg"/>
-  <div class="nav-item">
-    <h1 class="text-center">Auctioneer</h1>
-    <hr>
-    <div class="d-flex flex-row">
-      <p class="p-2">{{currentDate}}</p>
-      <div class="nav-item"></div>
-      <p class="p-2">Offered to you by Lorem & Ipsum</p>
-    </div>
+<div class="d-flex justify-content-around primary-header" id="mainNav">
+  <!--Website logo-->
+  <div class="d-flex flex-column justify-content-start logo" [routerLink]="['/']">
+    <h2 class="title text-white">the auctionhouse</h2>
+    <p class="subTitle text-white">the place to earn big bucks for your juicy trash</p>
   </div>
+  <!--Search bar-->
+  <div class="d-flex" id="searchFlex">
+    <input title="search" id="searchBar" placeholder="Type to search: e.g. lorems, ipsi, motivation">
+    <button id="searchButton">
+      <span class="searchButton fa fa-search"></span>
+    </button>
+    <!--todo add search function-->
+  </div>
+
+  <!--Registration and sign in option-->
+  <div class="nav-container d-flex">
+    <p class="nav-text"><i class="fa fa-user"></i>&nbsp;Sign in </p>
+    <a class="nav-text">&nbsp;|&nbsp;</a>
+    <p class="nav-text"> Register</p>
+  </div>
+
+  <!--user offers list-->
+  <p class="nav-container nav-text" [routerLink]="['offersList']"><i class="fa fa-gavel"></i>&nbsp;My Offers</p>
+
+  <!--favorites list-->
+  <p class="nav-container nav-text"><i class="fa fa-heart"></i>&nbsp;My Watch List</p>
+
+  <!--profile-->
+  <!--<p class="nav-container nav-text">logged in stuff</p> todo add shit to this-->
 </div>

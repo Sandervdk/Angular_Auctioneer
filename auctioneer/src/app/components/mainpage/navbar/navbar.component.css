@@ -1,30 +1,47 @@
-.flex-divider {
-  flex: 999;
+#mainNav {
+  background: #c9cacb;
+  color: black;
+  height: 50px;
+  padding: 0 20px;
 }
 
-.navbar-light .navbar-nav .nav-link {
-  color: rgba(0,0,0,.9);
+.nav-container {
+  padding: 1em;
+  cursor: pointer;
 }
 
-.navbar-brand:hover {
-  background-color: lightgray;
+.nav-container:hover {
+  background-color: #3369e8;;
+  color: white;
+  transition: 0.4s;
 }
 
-.navbar {
-  padding: 0;
+.nav-text {
+  margin: auto 0;
+  font-weight: lighter;
+  font-size: 0.9em;
 }
 
-.navbar-brand {
-  margin: 0;
-  padding: 10px;
-}
-
-.dropdown:hover .dropdown-menu {
+.dropdown-switch:hover .dropdown{
   display: block;
 }
 
-.dropdown-menu {
+.dropdown {
+  display: none;
+  background: inherit;
   position: absolute;
-  margin: 0;
-  padding: 0;
+  width: auto;
+  margin-top: 34px;
+  margin-left: -16px;
+  z-index: 150;
+  min-width: 120px;
+}
+
+.dropdown .nav-container{
+  border-top: 1px solid #c9cacb;
+}
+
+.dropdown .nav-container:hover{
+  background: #c9cacb;
+  color: black;
 }

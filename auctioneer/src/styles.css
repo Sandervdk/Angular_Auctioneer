@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 html * {
-  font-family: "Nunito SemiBold", sans-serif;
+  font-family: 'roboto', "Nunito SemiBold", sans-serif;
+}
+
+*:focus {
+  outline: none;
 }
 

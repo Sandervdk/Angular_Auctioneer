@@ -1,30 +1,56 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <h3>Pick a date:</h3>
-      <input type="text">
-      <h3>Pick a category:</h3>
-      <ul>
-        <li *ngFor="let category of categories"><a href="#">{{category}}</a></li>
-      </ul>
-    </div>
-
-    <div class="col-6">
-      <h1>Expiring Auctions</h1>
-      <div class="img-box" *ngFor="let item of items">
-        <a [href]="item.url"><img [src]=item.src width="250px"></a>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner"
+       (mouseenter)="stopInterval()"
+       (mouseleave)="continueInterval()">
+    <!--Creates a container for every image stored in the loop, the first image gets the active class to start the 'carousel'-->
+    <div *ngFor="let item of items; let i = index;"
+         [className]="(i==0)?'active carousel-item image':'carousel-item image'">
+      <img src="{{item.src}}">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="image-description">{{item.title}}</h5>
+        <p class="image-description">{{item.descr}}</p>
       </div>
     </div>
+  </div>
 
+  <a class="carousel-control-prev">
+    <span class="carousel-prev-icon" aria-hidden="true"
+          (click)="previousItem()"><i class="fa fa-chevron-left"></i></span>
+  </a>
 
-    <div class="col-3">
-      <h2>Lorem ipsum</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, blanditiis voluptas? Aperiam architecto
-        at autem dolor dolore doloremque error nihil pariatur porro praesentium quam, repellendus, sunt suscipit! Amet
-        consequuntur dolorem, laboriosam modi nam nihil officiis quae quisquam reiciendis sed. Ad deserunt dolore ea
-        fugiat, impedit in neque quis saepe tenetur.</p>
+  <a class="carousel-control-next" role="button">
+    <span class="carousel-next-icon" aria-hidden="true"
+          (click)="nextItem()"><i class="fa fa-chevron-right"></i></span>
+  </a>
+</div>
+
+<div class="homeFooter d-flex">
+  <div class="col-4 right-border">
+    <div class="auctionIndex">
+      <h1>Today's Auctions</h1>
+      <p id="todays_auctions_live" class="todaysAuctionSwitchLink active bottom-border">
+        <i class="fa fa-chevron-right"></i>&nbsp;Today's live auctions (
+        <ng-container *ngIf="isLoaded">{{offers.length}}</ng-container>&nbsp;)</p>
+      <p id="todays_auctions_viewall">View all</p>
     </div>
   </div>
+
+  <div class="col-8" *ngIf="!isLoaded; else showOffers">Loading current Offers</div>
+
+  <ng-template #showOffers>
+    <div class="col-4 right-border">
+      <div *ngFor="let offer of leftOffers" class="offerContainer">
+        <h4>{{offer.title}}</h4>
+        <p>{{offer.description}}</p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div *ngFor="let offer of rightOffers" class="offerContainer">
+        <h4>{{offer.title}}</h4>
+        <p>{{offer.description}}</p>
+      </div>
+    </div>
+  </ng-template>
 </div>
 
 

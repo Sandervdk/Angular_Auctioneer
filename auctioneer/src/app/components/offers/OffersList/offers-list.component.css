@@ -1,0 +1,23 @@
+.offersList {
+  width: max-content;
+  text-align: left;
+  padding: 1em 0;
+}
+
+.offerItem{
+  cursor: pointer;
+  margin: 0;
+  padding: 1em;
+}
+
+.offerItem:hover {
+  background-color: rgb(232, 232, 232);
+}
+
+h4 {
+  margin: 0;
+}
+
+.d-flex {
+  height: calc(100vh - 120px);
+}

@@ -22,6 +22,7 @@ import { Offers6Component } from './components/offers/Offers6/offers6.component'
 import { Details6Component } from './components/offers/Offers6/details/details6.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AppFbComponent } from './app-fb/app-fb.component';
+import { OffersListComponent } from './components/offers/OffersList/offers-list.component';
 
 
 
@@ -43,6 +44,7 @@ import { AppFbComponent } from './app-fb/app-fb.component';
     Offers6Component,
     Details6Component,
     AppFbComponent,
+    OffersListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,29 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]="['/']">Home</a>
+<div class="d-flex justify-content-between primary-header" id="mainNav">
+  <div class="d-flex nav-container justify-content-start dropdown-switch">
+    <p class="nav-text ">Auctions&nbsp;<i class="fa fa-chevron-down"></i></p>
 
-  <ul class="navbar-nav dropdown">
-    <li class="nav-item">
-      <a class="nav-link dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-         aria-haspopup="true" aria-expanded="false">
-        My Offers
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item navbar-brand" [routerLink]="['offers1']">All Offers List</a>
-        <a class="dropdown-item navbar-brand" [routerLink]="['offers2']">M/D (component store)</a>
-        <a class="dropdown-item navbar-brand" [routerLink]="['offers3']">M/D (from service)</a>
-        <a class="dropdown-item navbar-brand" [routerLink]="['offers4']">M/D (queryparams)</a>
-        <a class="dropdown-item navbar-brand" [routerLink]="['offers5']">M/D (validated)</a>
-        <a class="dropdown-item navbar-brand" [routerLink]="['offers6']">M/D (persisted)</a>
-      </div>
-    </li>
-  </ul>
+    <div class="dropdown">
+      <p class="nav-container nav-text">Today's Auctions</p>
+      <p class="nav-container nav-text">Active Auctions</p>
+    </div>
+  </div>
 
-  <a class="navbar-brand" href="#">My Bids</a>
+  <div class="d-flex">
+    <p class="nav-container nav-text">Watches & Jewelry</p>
+    <p class="nav-container nav-text">Gemstones</p>
+    <p class="nav-container nav-text">Collectables</p>
+    <p class="nav-container nav-text">Furniture</p>
+    <p class="nav-container nav-text">Vintage Fashion</p>
+    <p class="nav-container nav-text">The Bestest Games</p>
+    <p class="nav-container nav-text">Decorative Art</p>
+  </div>
 
-  <a class="navbar-brand" href="#">My Account</a>
+  <p class="nav-text nav-container">Help</p>
+</div>
 
-  <div class="flex-divider"></div>
 
-  <a class="navbar-brand" routerLink="signup">Sign up</a>
-  <a class="navbar-brand" routerLink="login">Log in</a>
-</nav>
