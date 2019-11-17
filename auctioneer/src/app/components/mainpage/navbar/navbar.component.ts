@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SessionService} from "../../../services/session.service";
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  user: string = 'Visitor';
 
-  constructor() { }
+  constructor(private sessionService: SessionService) {
+
+  }
 
   ngOnInit() {
   }
 
+  logIn() {
+    if (this.user == 'Visitor') {
+      this.sessionService.signOn('wies@test.test', 'Joepie123!');
+      this.user = 'wies@test.test';
+    } else {
+      this.sessionService.signOff();
+      this.user = 'Visitor';
+    }
+  }
 }

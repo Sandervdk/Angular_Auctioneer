@@ -23,6 +23,7 @@ import { Details6Component } from './components/offers/Offers6/details/details6.
 import {HttpClientModule} from "@angular/common/http";
 import { AppFbComponent } from './app-fb/app-fb.component';
 import { OffersListComponent } from './components/offers/OffersList/offers-list.component';
+import {SessionService} from "./services/session.service";
 
 
 
@@ -53,7 +54,7 @@ import { OffersListComponent } from './components/offers/OffersList/offers-list.
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [OffersService, Offers2Service],
+  providers: [OffersService, Offers2Service, SessionService],
   bootstrap: [AppFbComponent]
 })
 export class AppModule { }
