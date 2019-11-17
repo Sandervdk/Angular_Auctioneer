@@ -15,7 +15,8 @@
 
   <!--Registration and sign in option-->
   <div class="nav-container d-flex">
-    <p class="nav-text"><i class="fa fa-user"></i>&nbsp;Sign in </p>
+    <p class="nav-text"><i class="fa fa-user"></i>&nbsp;<a (click)="logIn()">
+      Sign {{user == 'Visitor' ? 'in' : 'out'}}</a> </p>
     <a class="nav-text">&nbsp;|&nbsp;</a>
     <p class="nav-text"> Register</p>
   </div>

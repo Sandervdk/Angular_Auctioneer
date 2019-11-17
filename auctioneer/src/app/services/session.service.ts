@@ -9,7 +9,7 @@ export class SessionService {
 
   constructor() { }
 
-  signOn(eMail: string, passWord: string) {
+  signIn(eMail: string, passWord: string) {
     firebase.auth().signInWithEmailAndPassword(eMail, passWord)
       .then(function(response) {
         console.log(response);

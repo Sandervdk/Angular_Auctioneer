@@ -7,22 +7,11 @@ import {SessionService} from "../../../services/session.service";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  user: string = 'Visitor';
 
-  constructor(private sessionService: SessionService) {
+  constructor() {
 
   }
 
   ngOnInit() {
-  }
-
-  logIn() {
-    if (this.user == 'Visitor') {
-      this.sessionService.signOn('wies@test.test', 'Joepie123!');
-      this.user = 'wies@test.test';
-    } else {
-      this.sessionService.signOff();
-      this.user = 'Visitor';
-    }
   }
 }
