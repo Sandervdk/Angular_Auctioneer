@@ -11,6 +11,7 @@ import {Details5Component} from "./components/offers/Offers5/details/details5.co
 import {Offers6Component} from "./components/offers/Offers6/offers6.component";
 import {Details6Component} from "./components/offers/Offers6/details/details6.component";
 import {OffersListComponent} from "./components/offers/OffersList/offers-list.component";
+import {SignOnComponent} from "./components/mainpage/sign-on/sign-on.component";
 
 
 const appRoutes: Routes = [
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
           {path: ':details6:', component: Details6Component}
         ]},
     ]},
-
+  { path: 'login', component: SignOnComponent },
 
 
 

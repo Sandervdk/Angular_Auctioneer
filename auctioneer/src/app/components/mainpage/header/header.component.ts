@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SessionService} from "../../../services/session.service";
+import {Router, RouterModule, RouterState} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,9 @@ import {SessionService} from "../../../services/session.service";
 export class HeaderComponent implements OnInit {
   currentDate: string;
   date: Date;
-  user: String = 'Visitor';
 
-  constructor(private sessionService: SessionService) {
+  constructor(private sessionService: SessionService,
+              private router : Router) {
     this.date = new Date();
     this.currentDate = "Today is " + this.date.toDateString();
   }
@@ -20,14 +21,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logIn() {
-    if (this.user == 'Visitor') {
-      this.sessionService.signIn('wies@test.test', 'Joepie123!');
-      this.user = 'wies@test.test';
-      console.log("Logged in")
-    } else {
+    if (this.sessionService.getCurrentUser() != 'Visitor') {
       this.sessionService.signOff();
-      this.user = 'Visitor';
-      console.log("Logged out")
+      this.router.navigate(['/']);
+      this.sessionService.setCurrentUser('Visitor');
+      console.log("Logged out");
+    } else {
+      this.router.navigate(['/login']);
     }
   }
 

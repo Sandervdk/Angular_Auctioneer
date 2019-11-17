@@ -24,6 +24,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AppFbComponent } from './app-fb/app-fb.component';
 import { OffersListComponent } from './components/offers/OffersList/offers-list.component';
 import {SessionService} from "./services/session.service";
+import { SignOnComponent } from './components/mainpage/sign-on/sign-on.component';
 
 
 
@@ -46,6 +47,7 @@ import {SessionService} from "./services/session.service";
     Details6Component,
     AppFbComponent,
     OffersListComponent,
+    SignOnComponent,
   ],
   imports: [
     BrowserModule,

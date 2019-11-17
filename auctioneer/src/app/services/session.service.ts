@@ -6,6 +6,7 @@ import 'firebase/auth';
   providedIn: 'root'
 })
 export class SessionService {
+  user : String = 'Visitor';
 
   constructor() { }
 
@@ -27,6 +28,14 @@ export class SessionService {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  getCurrentUser() {
+    return this.user;
+  }
+
+  setCurrentUser(user : String) {
+    this.user = user;
   }
 }
 
