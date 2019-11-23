@@ -20,11 +20,13 @@ import { Details5Component } from './components/offers/Offers5/details/details5.
 import {Offers2Service} from "./services/offers2.service";
 import { Offers6Component } from './components/offers/Offers6/offers6.component';
 import { Details6Component } from './components/offers/Offers6/details/details6.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { AppFbComponent } from './app-fb/app-fb.component';
 import { OffersListComponent } from './components/offers/OffersList/offers-list.component';
 import {SessionService} from "./services/session.service";
 import { SignOnComponent } from './components/mainpage/sign-on/sign-on.component';
+import { RegisterComponent } from './components/mainpage/register/register.component';
+import {AuthInterceptor} from "./services/authInterceptor.service";
 
 
 
@@ -48,6 +50,7 @@ import { SignOnComponent } from './components/mainpage/sign-on/sign-on.component
     AppFbComponent,
     OffersListComponent,
     SignOnComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,13 @@ import { SignOnComponent } from './components/mainpage/sign-on/sign-on.component
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [OffersService, Offers2Service, SessionService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    OffersService, Offers2Service, SessionService],
   bootstrap: [AppFbComponent]
 })
 export class AppModule { }

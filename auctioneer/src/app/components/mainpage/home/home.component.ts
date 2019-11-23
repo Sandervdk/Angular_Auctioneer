@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Offer} from "../../../models/offer";
 import {Offers2Service} from "../../../services/offers2.service";
 import {AuctionStatus} from "../../../models/auctionStatus";
+import {of} from "rxjs";
 
 
 class Item {
@@ -39,8 +40,9 @@ export class HomeComponent implements OnInit {
     this.offersService.getAllOffers()
       .subscribe(
         (offers) => {
-          this.offersService.offers = offers;
-          this.offers = offers;
+          console.log(offers);
+          this.offersService.offers = <Offer[]> offers;
+          this.offers = <Offer[]> offers;
 
           //todo should be used to only show active auctions, but there are none lel
           // for (let i = 0; i < this.offers.length; i++) {

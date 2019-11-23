@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Offer} from "../models/offer";
 import {AuctionStatus} from "../models/auctionStatus";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {catchError, retry} from "rxjs/operators";
 import {Observable, of} from "rxjs";
 

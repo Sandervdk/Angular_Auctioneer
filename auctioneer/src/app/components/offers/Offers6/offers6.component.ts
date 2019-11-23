@@ -22,13 +22,12 @@ export class Offers6Component implements OnInit {
     // this.offers = this.offersService.offers;
     this.isLoaded = false;
 
-    this.offersService.getAllOffers()
-      .subscribe(
-        (offers) => {
-          this.offersService.offers = offers;
-          this.offers = offers;
-          this.isLoaded = true;
-        })
+    this.offersService.getAllOffers().subscribe(
+      (offers) => {
+        this.offersService.offers = <Offer[]> offers;
+        this.offers = <Offer[]> offers;
+        this.isLoaded = true;
+      })
   }
 
   selectOffer(index: number): void {
