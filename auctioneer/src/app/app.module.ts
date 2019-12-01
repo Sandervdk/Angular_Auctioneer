@@ -9,8 +9,8 @@ import { NavbarComponent } from './components/mainpage/navbar/navbar.component';
 import { OffersComponent } from './components/offers/Offers/offers.component';
 import { Offers2Component } from './components/offers/Offers2/offers2.component';
 import { Details2Component } from './components/offers/Offers2/details/details2.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {OffersService} from "./services/offers.service";
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { OffersService} from "./services/offers.service";
 import { Offers3Component } from './components/offers/Offers3/offers3.component';
 import { Details3Component } from './components/offers/Offers3/details/details3.component';
 import { ErrorComponent } from './components/mainpage/error/error.component';
@@ -20,14 +20,16 @@ import { Details5Component } from './components/offers/Offers5/details/details5.
 import {Offers2Service} from "./services/offers2.service";
 import { Offers6Component } from './components/offers/Offers6/offers6.component';
 import { Details6Component } from './components/offers/Offers6/details/details6.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AppFbComponent } from './app-fb/app-fb.component';
 import { OffersListComponent } from './components/offers/OffersList/offers-list.component';
 import {SessionService} from "./services/session.service";
 import { SignOnComponent } from './components/mainpage/sign-on/sign-on.component';
 import { RegisterComponent } from './components/mainpage/register/register.component';
-import {AuthInterceptor} from "./services/authInterceptor.service";
-
+import { AuthInterceptor } from "./services/authInterceptor.service";
+import { Offers11Component } from './components/offers-2/Offers11/offers11.component';
+import { Detail11Component } from './components/offers-2/Offers11/detail11/detail11.component';
+import { OfferService } from "./services-2/offers.service";
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import {AuthInterceptor} from "./services/authInterceptor.service";
     OffersListComponent,
     SignOnComponent,
     RegisterComponent,
+    Offers11Component,
+    Detail11Component,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,10 @@ import {AuthInterceptor} from "./services/authInterceptor.service";
       useClass: AuthInterceptor,
       multi: true
     },
-    OffersService, Offers2Service, SessionService],
+    OffersService,
+    Offers2Service,
+    SessionService,
+    OfferService],
   bootstrap: [AppFbComponent]
 })
 export class AppModule { }

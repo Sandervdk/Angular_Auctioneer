@@ -13,6 +13,8 @@ import {Details6Component} from "./components/offers/Offers6/details/details6.co
 import {OffersListComponent} from "./components/offers/OffersList/offers-list.component";
 import {SignOnComponent} from "./components/mainpage/sign-on/sign-on.component";
 import {RegisterComponent} from "./components/mainpage/register/register.component";
+import {Offers11Component} from "./components/offers-2/Offers11/offers11.component";
+import {Detail11Component} from "./components/offers-2/Offers11/detail11/detail11.component";
 
 
 const appRoutes: Routes = [
@@ -29,6 +31,9 @@ const appRoutes: Routes = [
         ]},
       { path: 'offers6', component: Offers6Component, children: [
           {path: ':details6:', component: Details6Component}
+        ]},
+      { path: 'offers11', component: Offers11Component, children: [
+          {path: ':details11:', component: Detail11Component}
         ]},
     ]},
   { path: 'login', component: SignOnComponent },

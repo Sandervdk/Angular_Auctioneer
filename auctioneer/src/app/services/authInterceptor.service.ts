@@ -9,14 +9,15 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.session.getToken();
+    // request.headers.set('Ac' )
 
-    if (token) {
-      request = request.clone({
-        setParams: {'auth': token}
-      });
-    }
+    // if (token) {
+    //   request = request.clone({
+    //     setParams: {'auth': token}
+    //   });
+    // }
+    console.log(request);
     return next.handle(request);
-
   }
 
 }
