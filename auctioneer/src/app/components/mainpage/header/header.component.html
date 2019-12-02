@@ -15,7 +15,7 @@
 
   <!--Registration and sign in option-->
   <div class="nav-container d-flex">
-    <p class="nav-text"><i class="fa fa-user"></i>&nbsp;<a (click)="logIn()">
+    <p class="nav-text"><i class="fa fa-user"></i>&nbsp;<a (click)="logInOrOut()">
       Sign {{this.sessionService.getCurrentUser() == 'Visitor' ? 'in' : 'out'}}</a> </p>
     <p class="nav-text" *ngIf="this.sessionService.getCurrentUser() == 'Visitor'">&nbsp;|&nbsp;</p>
     <p class="nav-text" [routerLink]="['register']" *ngIf="this.sessionService.getCurrentUser() == 'Visitor'"><a>Register</a></p>
@@ -25,7 +25,7 @@
   <p class="nav-container nav-text" [routerLink]="['offersList']"><i class="fa fa-gavel"></i>&nbsp;My Offers</p>
 
   <!--favorites list-->
-  <p class="nav-container nav-text" (click)="temp()"><i class="fa fa-heart"></i>&nbsp;My Watch List</p>
+  <p class="nav-container nav-text"><i class="fa fa-heart"></i>&nbsp;My Watch List</p>
 
   <!--profile-->
   <p class="nav-container nav-text">Logged in as {{this.sessionService.getCurrentUser()}}</p>

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface OffersRepository {
 
-   public List<Offer> findAll();
+   List<Offer> findAll();
 }

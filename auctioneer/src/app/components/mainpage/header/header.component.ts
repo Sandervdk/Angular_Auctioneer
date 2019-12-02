@@ -20,7 +20,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  logIn() {
+  logInOrOut() {
+    // If this function is called, either logs you out if you're not currently 'Visitor',
+    // or takes you to the login page if you're currently 'Visitor'
     if (this.sessionService.getCurrentUser() != 'Visitor') {
       this.sessionService.signOff();
       this.router.navigate(['/']);
