@@ -3,6 +3,7 @@ package hva.se.is2055.aucserver.models;
 import java.util.Date;
 
 public class Offer {
+    private long id;
     private String title;
     private String description;
     private Date sellDate;
@@ -10,8 +11,12 @@ public class Offer {
     private double valueHighestBid;
     private int numberOfBids;
 
-    public Offer(String title, String description, Date sellDate,
+    protected Offer() {
+    }
+
+    public Offer(long id, String title, String description, Date sellDate,
                  AuctionStatus auctionStatus, double valueHighestBid, int numberOfBids) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.sellDate = sellDate;
@@ -20,6 +25,7 @@ public class Offer {
         this.numberOfBids = numberOfBids;
     }
 
+    //Getters
     public String getTitle() {
         return title;
     }
@@ -42,5 +48,40 @@ public class Offer {
 
     public int getNumberOfBids() {
         return numberOfBids;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    // Setters
+
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setSellDate(Date sellDate) {
+        this.sellDate = sellDate;
+    }
+
+    public void setAuctionStatus(AuctionStatus auctionStatus) {
+        this.auctionStatus = auctionStatus;
+    }
+
+    public void setValueHighestBid(double valueHighestBid) {
+        this.valueHighestBid = valueHighestBid;
+    }
+
+    public void setNumberOfBids(int numberOfBids) {
+        this.numberOfBids = numberOfBids;
     }
 }
