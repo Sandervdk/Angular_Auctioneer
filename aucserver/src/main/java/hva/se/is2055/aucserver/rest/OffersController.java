@@ -39,7 +39,7 @@ public class OffersController {
     }
 
     @PostMapping("/offers")
-    public ResponseEntity<Object> createOffer(@RequestBody Offer offer) {
+    public ResponseEntity<Offer> createOffer(@RequestBody Offer offer) {
         Offer savedOffer = repository.save(offer);
 
         URI location = ServletUriComponentsBuilder
@@ -63,10 +63,12 @@ public class OffersController {
 
     @PutMapping("/offers/{id}")
     public Offer updateOffer(@PathVariable long id, @RequestBody Offer offer) {
+        System.out.println(id);
         if (id == offer.getId()) {
             repository.deleteById(id);
             return repository.save(offer);
         } else throw new ForbiddenException("Offer " + offer.getId() + " does not match parameter " + id);
     }
+
 }
 

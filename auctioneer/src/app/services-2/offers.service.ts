@@ -55,7 +55,9 @@ export class OfferService {
     valueHighestBid = parseFloat((Math.random() * 2500).toFixed(2));
     numberOfBids = Math.round(Math.random() * 20);
 
-    return {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
+    let newOffer = new Offer(0, title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate);
+    this.http.post<Offer>(this.link, newOffer).subscribe((offer) => newOffer.id = offer.id);
+    return newOffer;
   }
 
   getAllOffers(): Observable<Offer[]> {

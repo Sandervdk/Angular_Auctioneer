@@ -46,13 +46,17 @@ export class Detail11Component implements OnInit, OnDestroy {
   }
 
 
-  private editOffer(index: number): void {
-    if (!(index >= this.offers.length)) {
-      this.noChange = true;
-      this.offer = <Offer> this.offersService.offers[index];
-      this.offerCopy = {...this.offer};
-      // If an index larger than the size of the offers array is typed into the URL, redirects back to /offers
-    } else this.router.navigate(['..'], {relativeTo: this.route});
+  private editOffer(id: number): void {
+    for (let i = 0; i < this.offers.length; i++) {
+      if (this.offers[i].id == id) {
+        this.noChange = true;
+        this.offer = <Offer> this.offers[i];
+        this.offerCopy = {...this.offer};
+        return;
+        // If an index larger than the size of the offers array is typed into the URL, redirects back to /offers
+      }
+    }
+    this.router.navigate(['..'], {relativeTo: this.route});
   }
 
   saveOffer() {
@@ -80,7 +84,7 @@ export class Detail11Component implements OnInit, OnDestroy {
     // Used to clear the form to make a new offer
     if (this.alertUnsavedChanges()) {
       this.index = null;
-      this.offer = {
+      this.offer = { id: 0,
         title: null, sellDate: null, numberOfBids: null,
         valueHighestBid: null, auctionStatus: null, description: null
       };

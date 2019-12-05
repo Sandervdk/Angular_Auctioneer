@@ -35,7 +35,7 @@ export class Offers11Component implements OnInit {
 
     this.router.navigate(['edit'], {
       relativeTo: this.route,
-      queryParams: {id: index}
+      queryParams: {id: this.offersService.offers[index].id}
     })
   }
 
@@ -43,7 +43,6 @@ export class Offers11Component implements OnInit {
     this.offersService.setOffers(this.offers);
     let newOffer = this.offersService.addRandomOffer();
     this.offersService.add(newOffer);
-    this.selectOffer(this.offers.indexOf(newOffer));
   }
 
 }

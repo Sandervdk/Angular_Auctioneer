@@ -1,6 +1,8 @@
 import { AuctionStatus } from "./auctionStatus";
+import {log} from "util";
 
 export class Offer {
+  public id: number;
   public title: string;
   public description: string;
   public sellDate: Date;
@@ -8,8 +10,9 @@ export class Offer {
   public valueHighestBid: number;
   public numberOfBids: number;
 
-  constructor(title: string, description: string, auctionStatus: AuctionStatus,
+  constructor(id: number, title: string, description: string, auctionStatus: AuctionStatus,
               valueHighestBid: number, numberOfBids: number, sellDate: Date) {
+    this.id = id;
     this.title = title;
     this.description = description;
     this.auctionStatus = auctionStatus;

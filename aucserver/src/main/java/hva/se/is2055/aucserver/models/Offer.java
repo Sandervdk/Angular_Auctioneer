@@ -11,11 +11,10 @@ public class Offer {
     private double valueHighestBid;
     private int numberOfBids;
 
-    protected Offer() {
-    }
+    protected Offer() {}
 
-    public Offer(long id, String title, String description, Date sellDate,
-                 AuctionStatus auctionStatus, double valueHighestBid, int numberOfBids) {
+    public Offer(long id, String title, String description, AuctionStatus auctionStatus,
+                 double valueHighestBid, int numberOfBids, Date sellDate) {
         this.id = id;
         this.title = title;
         this.description = description;
