@@ -1,4 +1,4 @@
-package hva.se.is2055.aucserver.rest;
+package hva.se.is2055.aucserver.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
