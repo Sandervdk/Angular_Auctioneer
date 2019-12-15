@@ -34,6 +34,7 @@ export class OfferService {
 
   // For populating the array initially, 3.0
   addRandomOffer(): Offer {
+    let id: number = 0;
     let title: string = "Item " + (Math.random() * 1000).toFixed(0);
     let description: string = "A description";
     let sellDate: Date = new Date();
@@ -55,7 +56,7 @@ export class OfferService {
     valueHighestBid = parseFloat((Math.random() * 2500).toFixed(2));
     numberOfBids = Math.round(Math.random() * 20);
 
-    let newOffer = new Offer(0, title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate);
+    let newOffer = new Offer(id, title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate);
     this.http.post<Offer>(this.link, newOffer).subscribe((offer) => newOffer.id = offer.id);
     return newOffer;
   }

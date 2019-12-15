@@ -80,8 +80,9 @@ export class Details6Component implements OnInit, OnDestroy {
   clearOffer() {
     // Used to clear the form to make a new offer
     if (this.alertUnsavedChanges()) {
+      let id: number = 0;
       this.index = null;
-      this.offer = {
+      this.offer = {id,
         title: null, sellDate: null, numberOfBids: null,
         valueHighestBid: null, auctionStatus: null, description: null
       };

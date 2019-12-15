@@ -53,6 +53,7 @@ export class Offers2Component implements OnInit {
   }
 
   addRandomOffer(): Offer {
+    let id: number = 0;
     let title: string = "Item " + (Math.random() * 1000).toFixed(0);
     let description: string = "A description";
     let sellDate: Date = new Date();
@@ -73,7 +74,7 @@ export class Offers2Component implements OnInit {
 
     valueHighestBid = parseFloat((Math.random() * 2500).toFixed(2));
     numberOfBids = Math.round(Math.random() * 20);
-    let newOffer: Offer = {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
+    let newOffer: Offer = {id, title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
 
     //Adds a new offer and displays it instantly, (check is so the first offers that get added in the list don't show)
     if (this.offers.length >= 8) {

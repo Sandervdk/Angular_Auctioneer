@@ -22,6 +22,7 @@ export class OffersComponent implements OnInit {
   }
 
   addRandomOffer(): Offer {
+    let id: number = 0;
     let title: string = "Item " + (Math.random() * 1000).toFixed(0);
     let description: string = "A description";
     let sellDate: Date = new Date();
@@ -43,7 +44,7 @@ export class OffersComponent implements OnInit {
     valueHighestBid = parseFloat((Math.random() * 2500).toFixed(2));
     numberOfBids = Math.round(Math.random() * 20);
 
-    return {title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
+    return {id, title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate};
   }
 
 }
