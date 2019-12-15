@@ -38,6 +38,31 @@ public class Offer {
         this.numberOfBids = numberOfBids;
     }
 
+    public static Offer createRandomOffer() {
+        String title = "Item " + Math.round((Math.random() * 1000));
+        String description = "A description";
+        Date sellDate = new Date();
+        AuctionStatus auctionStatus = null;
+        double valueHighestBid;
+        int numberOfBids;
+
+        valueHighestBid = Math.round((Math.random() * 2500)) /100.00;
+        numberOfBids = (int) Math.round(Math.random() * 20);
+
+        switch ((int) Math.round(Math.random() * 7)) {
+            case 0: auctionStatus = AuctionStatus.CLOSED; break;
+            case 1: auctionStatus = AuctionStatus.DELIVERED; break;
+            case 2: auctionStatus = AuctionStatus.EXPIRED; break;
+            case 3: auctionStatus = AuctionStatus.FOR_SALE; break;
+            case 4: auctionStatus = AuctionStatus.NEW; break;
+            case 5: auctionStatus = AuctionStatus.PAID; break;
+            case 6: auctionStatus = AuctionStatus.SOLD; break;
+            case 7: auctionStatus = AuctionStatus.WITHDRAWN; break;
+        }
+
+        return new Offer(title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate);
+    }
+
     public Bid getLatestBid() {
         return this.bids.get(bids.size() - 1);
     }
