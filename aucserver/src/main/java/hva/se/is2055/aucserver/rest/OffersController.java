@@ -3,7 +3,9 @@ package hva.se.is2055.aucserver.rest;
 import hva.se.is2055.aucserver.exceptions.ForbiddenException;
 import hva.se.is2055.aucserver.exceptions.ResourceNotFoundException;
 import hva.se.is2055.aucserver.models.Offer;
+import hva.se.is2055.aucserver.repositories.OfferRepositoryJpa;
 import hva.se.is2055.aucserver.repositories.OfferRepositoryMock;
+import hva.se.is2055.aucserver.repositories.OffersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +17,10 @@ import java.util.List;
 @RestController
 public class OffersController {
 
-    private final OfferRepositoryMock repository;
+    private final OffersRepository repository;
 
     @Autowired
-    public OffersController(OfferRepositoryMock repository) {
+    public OffersController(OfferRepositoryJpa repository) {
         this.repository = repository;
     }
 

@@ -2,7 +2,6 @@ package hva.se.is2055.aucserver.repositories;
 
 import hva.se.is2055.aucserver.models.AuctionStatus;
 import hva.se.is2055.aucserver.models.Offer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
