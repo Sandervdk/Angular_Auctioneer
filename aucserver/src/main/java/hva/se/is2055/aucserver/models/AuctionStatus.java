@@ -25,6 +25,5 @@ public enum AuctionStatus {
     EXPIRED,
 
     @JsonProperty("Withdrawn")
-    WITHDRAWN;
-
+    WITHDRAWN
 }

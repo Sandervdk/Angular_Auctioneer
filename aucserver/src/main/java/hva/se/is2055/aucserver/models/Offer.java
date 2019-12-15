@@ -1,27 +1,70 @@
 package hva.se.is2055.aucserver.models;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Entity
 public class Offer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String title;
     private String description;
-    private Date sellDate;
+    @Enumerated(EnumType.STRING)
     private AuctionStatus auctionStatus;
     private double valueHighestBid;
     private int numberOfBids;
+    private Date sellDate;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "offer")
+    private List<Bid> bids = new ArrayList<>();
 
     protected Offer() {}
 
-    public Offer(long id, String title, String description, AuctionStatus auctionStatus,
+    public Offer(String title, String description, AuctionStatus auctionStatus,
                  double valueHighestBid, int numberOfBids, Date sellDate) {
-        this.id = id;
+        super();
         this.title = title;
         this.description = description;
         this.sellDate = sellDate;
         this.auctionStatus = auctionStatus;
         this.valueHighestBid = valueHighestBid;
         this.numberOfBids = numberOfBids;
+    }
+
+    public Bid getLatestBid() {
+        return this.bids.get(bids.size() - 1);
+    }
+
+    public boolean addHigherBid(Bid newBid) {
+        double bidPrice = newBid.getValue();
+        for (Bid placedBids: bids) {
+            if (placedBids.getValue() > bidPrice) {
+                return false;
+            }
+        }
+        bids.add(newBid);
+        this.valueHighestBid = newBid.getValue();
+        this.numberOfBids = bids.size();
+        return true;
+    }
+
+    public List<Bid> getBids() {
+        return bids;
+    }
+
+    public void addBid(Bid bid) {
+        bids.add(bid);
+    }
+
+    public void removeBid(Bid bid) {
+        bids.remove(bid);
     }
 
     //Getters
@@ -46,7 +89,7 @@ public class Offer {
     }
 
     public int getNumberOfBids() {
-        return numberOfBids;
+        return this.bids.size();
     }
 
     public long getId() {
@@ -54,8 +97,6 @@ public class Offer {
     }
 
     // Setters
-
-
     public void setId(long id) {
         this.id = id;
     }
@@ -76,11 +117,16 @@ public class Offer {
         this.auctionStatus = auctionStatus;
     }
 
-    public void setValueHighestBid(double valueHighestBid) {
-        this.valueHighestBid = valueHighestBid;
-    }
-
-    public void setNumberOfBids(int numberOfBids) {
-        this.numberOfBids = numberOfBids;
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", auctionStatus=" + auctionStatus +
+                ", valueHighestBid=" + valueHighestBid +
+                ", numberOfBids=" + numberOfBids +
+                ", sellDate=" + sellDate +
+                '}';
     }
 }

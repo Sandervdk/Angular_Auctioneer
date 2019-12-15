@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface OffersRepository {
 
-   List<Offer> findAll();
+    List<Offer> findAll();
 
-   Offer findById(long id);
+    Offer findById(long id);
 
-   Offer save(Offer offer);
+    Offer save(Offer offer);
 
-   boolean deleteById(long id);
+    boolean deleteById(long id);
 }
