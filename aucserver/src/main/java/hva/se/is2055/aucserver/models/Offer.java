@@ -64,7 +64,10 @@ public class Offer {
     }
 
     public Bid getLatestBid() {
-        return this.bids.get(bids.size() - 1);
+        if (bids.size() > 0) {
+            return this.bids.get(bids.size() - 1);
+        }
+        else return null;
     }
 
     public boolean addHigherBid(Bid newBid) {
