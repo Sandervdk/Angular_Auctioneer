@@ -34,7 +34,7 @@ public class BidsController {
                     " on offerId=" + id);
         }
 
-        if (offer.getAuctionStatus() != AuctionStatus.FOR_SALE) {
+        if (offer.getStatus() != AuctionStatus.FOR_SALE) {
             throw new ForbiddenException("Bid is not open for new bids.");
         }
         bid.setOffer(offer);

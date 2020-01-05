@@ -3,27 +3,38 @@ package hva.se.is2055.aucserver.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum AuctionStatus {
+
     @JsonProperty("New")
-    NEW,
+    NEW("New"),
 
     @JsonProperty("For Sale")
-    FOR_SALE,
+    FOR_SALE("For Sale"),
 
     @JsonProperty("Sold")
-    SOLD,
+    SOLD("Sold"),
 
     @JsonProperty("Paid")
-    PAID,
+    PAID("Paid"),
 
     @JsonProperty("Delivered")
-    DELIVERED,
+    DELIVERED("Delivered"),
 
     @JsonProperty("Closed")
-    CLOSED,
+    CLOSED("Closed"),
 
     @JsonProperty("Expired")
-    EXPIRED,
+    EXPIRED("Expired"),
 
     @JsonProperty("Withdrawn")
-    WITHDRAWN
+    WITHDRAWN("Withdrawn");
+
+    private String name;
+
+    AuctionStatus(String aNew) {
+        this.name = aNew;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

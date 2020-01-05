@@ -1,5 +1,6 @@
 package hva.se.is2055.aucserver.repositories;
 
+import hva.se.is2055.aucserver.models.AuctionStatus;
 import hva.se.is2055.aucserver.models.Bid;
 import hva.se.is2055.aucserver.models.Offer;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,13 @@ public class OffersJpaRepository implements OffersRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Override
+    public List<Offer> findByQuery(String jpqlName, Object param) {
+        TypedQuery<Offer> query = entityManager.createNamedQuery(jpqlName, Offer.class)
+                .setParameter(1, param);
+        return query.getResultList();
+    }
 
     @Override
     public List<Offer> findAll() {

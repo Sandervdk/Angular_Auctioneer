@@ -1,13 +1,16 @@
 package hva.se.is2055.aucserver.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name="offer_find_by_status", query="select o from Offer o where o.status = ?1"),
+        @NamedQuery(name="offer_find_by_title", query="select o from Offer o where o.title = ?1"),
+        @NamedQuery(name="offer_find_by_minBidValue", query="select o from Offer o where o.valueHighestBid >= ?1")
+})
 public class Offer {
 
     @Id
@@ -17,7 +20,7 @@ public class Offer {
     private String title;
     private String description;
     @Enumerated(EnumType.STRING)
-    private AuctionStatus auctionStatus;
+    private AuctionStatus status;
     private double valueHighestBid;
     private int numberOfBids;
     private Date sellDate;
@@ -27,13 +30,13 @@ public class Offer {
 
     protected Offer() {}
 
-    public Offer(String title, String description, AuctionStatus auctionStatus,
+    public Offer(String title, String description, AuctionStatus status,
                  double valueHighestBid, int numberOfBids, Date sellDate) {
         super();
         this.title = title;
         this.description = description;
         this.sellDate = sellDate;
-        this.auctionStatus = auctionStatus;
+        this.status = status;
         this.valueHighestBid = valueHighestBid;
         this.numberOfBids = numberOfBids;
     }
@@ -42,7 +45,7 @@ public class Offer {
         String title = "Item " + Math.round((Math.random() * 1000));
         String description = "A description";
         Date sellDate = new Date();
-        AuctionStatus auctionStatus = null;
+        AuctionStatus status = null;
         double valueHighestBid;
         int numberOfBids;
 
@@ -50,17 +53,17 @@ public class Offer {
         numberOfBids = (int) Math.round(Math.random() * 20);
 
         switch ((int) Math.round(Math.random() * 7)) {
-            case 0: auctionStatus = AuctionStatus.CLOSED; break;
-            case 1: auctionStatus = AuctionStatus.DELIVERED; break;
-            case 2: auctionStatus = AuctionStatus.EXPIRED; break;
-            case 3: auctionStatus = AuctionStatus.FOR_SALE; break;
-            case 4: auctionStatus = AuctionStatus.NEW; break;
-            case 5: auctionStatus = AuctionStatus.PAID; break;
-            case 6: auctionStatus = AuctionStatus.SOLD; break;
-            case 7: auctionStatus = AuctionStatus.WITHDRAWN; break;
+            case 0: status = AuctionStatus.CLOSED; break;
+            case 1: status = AuctionStatus.DELIVERED; break;
+            case 2: status = AuctionStatus.EXPIRED; break;
+            case 3: status = AuctionStatus.FOR_SALE; break;
+            case 4: status = AuctionStatus.NEW; break;
+            case 5: status = AuctionStatus.PAID; break;
+            case 6: status = AuctionStatus.SOLD; break;
+            case 7: status = AuctionStatus.WITHDRAWN; break;
         }
 
-        return new Offer(title, description, auctionStatus, valueHighestBid, numberOfBids, sellDate);
+        return new Offer(title, description, status, valueHighestBid, numberOfBids, sellDate);
     }
 
     public Bid getLatestBid() {
@@ -108,8 +111,8 @@ public class Offer {
         return sellDate;
     }
 
-    public AuctionStatus getAuctionStatus() {
-        return auctionStatus;
+    public AuctionStatus getStatus() {
+        return status;
     }
 
     public double getValueHighestBid() {
@@ -141,8 +144,8 @@ public class Offer {
         this.sellDate = sellDate;
     }
 
-    public void setAuctionStatus(AuctionStatus auctionStatus) {
-        this.auctionStatus = auctionStatus;
+    public void setStatus(AuctionStatus status) {
+        this.status = status;
     }
 
     @Override
@@ -151,7 +154,7 @@ public class Offer {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", auctionStatus=" + auctionStatus +
+                ", status=" + status +
                 ", valueHighestBid=" + valueHighestBid +
                 ", numberOfBids=" + numberOfBids +
                 ", sellDate=" + sellDate +
