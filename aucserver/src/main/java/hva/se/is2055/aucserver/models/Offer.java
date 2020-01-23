@@ -1,5 +1,8 @@
 package hva.se.is2055.aucserver.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,14 +21,18 @@ public class Offer {
     private long id;
 
     private String title;
+    @JsonIgnore
     private String description;
     @Enumerated(EnumType.STRING)
     private AuctionStatus status;
+    @JsonIgnore
     private double valueHighestBid;
+    @JsonIgnore
     private int numberOfBids;
+    @JsonIgnore
     private Date sellDate;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "offer")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "offer", cascade = CascadeType.MERGE)
     private List<Bid> bids = new ArrayList<>();
 
     protected Offer() {}

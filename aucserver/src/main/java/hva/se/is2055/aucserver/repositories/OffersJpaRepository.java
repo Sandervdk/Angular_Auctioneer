@@ -36,17 +36,21 @@ public class OffersJpaRepository implements OffersRepository {
         return entityManager.find(Offer.class, id);
     }
 
-
     @Override
     public Offer save(Offer e) {
         entityManager.merge(e);
+        if (!entityManager.contains(e)) {
+            entityManager.persist(e);
+        }
         return e;
     }
 
     @Override
     public boolean deleteById(long id) {
         Offer deletedOffer = this.findById(id);
-        entityManager.remove(deletedOffer);
+        if (deletedOffer != null) {
+            entityManager.remove(deletedOffer);
+        }
         return this.findById(id) == null;
     }
 
@@ -70,7 +74,7 @@ public class OffersJpaRepository implements OffersRepository {
         offer.addHigherBid(bid4);
 
         //Adds every bid that has been made properly
-        for (Bid bid: offer.getBids()) {
+        for (Bid bid : offer.getBids()) {
             entityManager.persist(bid);
         }
     }

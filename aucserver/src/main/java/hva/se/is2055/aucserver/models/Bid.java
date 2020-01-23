@@ -13,7 +13,7 @@ public class Bid {
 
     private double value;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnore
     private Offer offer;
 
