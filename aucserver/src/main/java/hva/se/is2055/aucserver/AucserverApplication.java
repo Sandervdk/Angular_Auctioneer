@@ -3,8 +3,10 @@ package hva.se.is2055.aucserver;
 import hva.se.is2055.aucserver.models.AuctionStatus;
 import hva.se.is2055.aucserver.models.Bid;
 import hva.se.is2055.aucserver.models.Offer;
+import hva.se.is2055.aucserver.models.User;
 import hva.se.is2055.aucserver.repositories.BidJpaRepository;
 import hva.se.is2055.aucserver.repositories.OffersJpaRepository;
+import hva.se.is2055.aucserver.repositories.UserJpaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class AucserverApplication implements CommandLineRunner {
 
     @Autowired
     OffersJpaRepository offerRepository;
+
+    @Autowired
+    UserJpaRepository userRepository;
 
     @Autowired
     BidJpaRepository bidRepository;
@@ -48,6 +53,7 @@ public class AucserverApplication implements CommandLineRunner {
         logger.info("User id 4 -> {}", offerRepository.findById(4).getTitle() + " - " + offerRepository.findById(4).getId());
 
         logger.info("All users -> {}", offerRepository.findAll());
+        logger.info("Insert new user -> {}", userRepository.save(new User("Sir mech", "mechanic@klm.nl", "welkom123", false)));
     }
 
     private void addBidsToOffers(Offer offer) {
