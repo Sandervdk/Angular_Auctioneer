@@ -9,6 +9,15 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.session.getToken();
+
+    if (token == null) {
+      return next.handle(request);
+    } else {
+      // @ts-ignore
+      const cloned = request.clone({setHeaders: {Authorization: token}});
+      console.log(cloned);
+      return next.handle(cloned);
+    }
     // request.headers.set('Ac' )
     //
     // if (token) {
@@ -16,8 +25,8 @@ export class AuthInterceptor implements HttpInterceptor {
     //     setParams: {'auth': token}
     //   });
     // }
-    console.log(request);
-    return next.handle(request);
+    // console.log(request);
+    // return next.handle(request);
   }
 
 }
