@@ -1,5 +1,6 @@
 package hva.se.is2055.aucserver.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -21,16 +22,17 @@ public class Offer {
     private long id;
 
     private String title;
-    @JsonIgnore
+
     private String description;
+
+    private Date sellDate;
+
     @Enumerated(EnumType.STRING)
     private AuctionStatus status;
-    @JsonIgnore
+
     private double valueHighestBid;
-    @JsonIgnore
+
     private int numberOfBids;
-    @JsonIgnore
-    private Date sellDate;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "offer", cascade = CascadeType.MERGE)
     private List<Bid> bids = new ArrayList<>();
@@ -46,31 +48,6 @@ public class Offer {
         this.status = status;
         this.valueHighestBid = valueHighestBid;
         this.numberOfBids = numberOfBids;
-    }
-
-    public static Offer createRandomOffer() {
-        String title = "Item " + Math.round((Math.random() * 1000));
-        String description = "A description";
-        Date sellDate = new Date();
-        AuctionStatus status = null;
-        double valueHighestBid;
-        int numberOfBids;
-
-        valueHighestBid = Math.round((Math.random() * 2500)) /100.00;
-        numberOfBids = (int) Math.round(Math.random() * 20);
-
-        switch ((int) Math.round(Math.random() * 7)) {
-            case 0: status = AuctionStatus.CLOSED; break;
-            case 1: status = AuctionStatus.DELIVERED; break;
-            case 2: status = AuctionStatus.EXPIRED; break;
-            case 3: status = AuctionStatus.FOR_SALE; break;
-            case 4: status = AuctionStatus.NEW; break;
-            case 5: status = AuctionStatus.PAID; break;
-            case 6: status = AuctionStatus.SOLD; break;
-            case 7: status = AuctionStatus.WITHDRAWN; break;
-        }
-
-        return new Offer(title, description, status, valueHighestBid, numberOfBids, sellDate);
     }
 
     public Bid getLatestBid() {

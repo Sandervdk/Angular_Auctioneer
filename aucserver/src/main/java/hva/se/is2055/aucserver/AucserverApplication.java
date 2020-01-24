@@ -37,7 +37,6 @@ public class AucserverApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        createInitialOffers();
         logger.info("Insert Offer 1 -> {}", offerRepository.save(new Offer("Round Table", "Table that might be an oval", AuctionStatus.FOR_SALE, 23.5, 4, new Date())));
         logger.info("Insert Offer 2 -> {}", offerRepository.save(new Offer("Square coca cola bottle", "Its a square coca cola bottle, what do you expect,", AuctionStatus.SOLD, 9968.35, 35, new Date())));
         logger.info("Insert Offer 3 -> {}", offerRepository.save(new Offer("Stone Frisbee", "ancient frisbee, made in 2005", AuctionStatus.FOR_SALE, 56, 69, new Date())));
@@ -60,7 +59,7 @@ public class AucserverApplication implements CommandLineRunner {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/*")
+                registry.addMapping("/**")
                         .allowCredentials(true)
                         .allowedHeaders(HttpHeaders.AUTHORIZATION, HttpHeaders.CONTENT_TYPE)
                         .exposedHeaders(HttpHeaders.AUTHORIZATION, HttpHeaders.CONTENT_TYPE)
@@ -70,14 +69,4 @@ public class AucserverApplication implements CommandLineRunner {
         };
     }
 
-    @Transactional
-    protected void createInitialOffers() {
-        List<Offer> offers = this.offerRepository.findAll();
-        if (offers.size() > 0) return;
-        System.out.println("Configuring some initial offer data");
-
-        for (int i = 0; i < 4; i++) {
-            Offer offer = this.offerRepository.save(Offer.createRandomOffer());
-        }
-    }
 }

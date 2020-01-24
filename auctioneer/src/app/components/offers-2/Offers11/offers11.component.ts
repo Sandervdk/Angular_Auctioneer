@@ -23,7 +23,7 @@ export class Offers11Component implements OnInit {
 
     this.offersService.getAllOffers().subscribe(
       (offers) => {
-        this.offersService.offers = <Offer[]> offers;
+
         this.offers = <Offer[]> offers;
         this.isLoaded = true;
       })

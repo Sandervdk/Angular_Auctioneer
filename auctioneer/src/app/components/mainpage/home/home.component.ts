@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     this.offersService.getAllOffers()
       .subscribe(
         (offers) => {
-          console.log(offers);
+
           this.offersService.offers = <Offer[]> offers;
           this.offers = <Offer[]> offers;
 
@@ -88,11 +88,16 @@ export class HomeComponent implements OnInit {
       for(let i = 0; i < elements.length; i++) {
         if (elements[i].classList.contains('active')) {
           //removes the active class after the next images is faded in to stop the white flashing simulator
-          setTimeout(() => {elements[i].classList.remove('active')}, transitiontime);
+          setTimeout(() => {
+            if (elements[i] !== undefined)
+              elements[i].classList.remove('active')}, transitiontime);
 
           if (i == elements.length - 1) {
             elements[0].setAttribute('style', 'z-index: 200');
-            setTimeout(()=> elements[0].setAttribute('style', ''), transitiontime);
+            setTimeout(()=> {
+              if (elements[0] !== undefined)
+                elements[0].setAttribute('style', ''), transitiontime
+            });
           }
 
           //checks if it has reached the end of the list, if it has it will restart from the beginning

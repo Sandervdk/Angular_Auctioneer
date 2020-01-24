@@ -59,7 +59,6 @@ public class OffersController {
     }
 
     @GetMapping("/offers/{id}")
-
     public Offer retrieveOffer(@PathVariable long id) {
         Offer offer = repository.findById(id);
 

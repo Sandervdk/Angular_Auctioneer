@@ -39,9 +39,6 @@ public class OffersJpaRepository implements OffersRepository {
     @Override
     public Offer save(Offer e) {
         entityManager.merge(e);
-        if (!entityManager.contains(e)) {
-            entityManager.persist(e);
-        }
         return e;
     }
 

@@ -34,9 +34,11 @@ public class AuthenticateController {
 
         if (email != null) {
             String name = email.substring(0, email.indexOf("@"));
-            if (email.startsWith(password)) {
-                User user = repository.save(new User(name, email, password, false));
-
+            User user = repository.findByEmail(email);
+            if (email.startsWith(password) || user != null) {
+                if (user == null) {
+                    user = repository.save(new User(name, email, password, false));
+                }
                 return ResponseEntity.accepted()
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " +
                                 tokenGenerator.encode(user.getId(), user.isAdmin()))

@@ -27,7 +27,7 @@ public class UserJpaRepository {
     }
 
     public User findByEmail(String email) {
-        return entityManager.find(User.class, email);
+        return entityManager.createQuery("Select u FROM User u WHERE u.email = \'" + email + "\'", User.class).getResultList().get(0);
     }
 
     public User save(User user) {
